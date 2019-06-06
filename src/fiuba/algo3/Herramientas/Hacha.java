@@ -7,24 +7,23 @@ import fiuba.algo3.Materiales.Piedra;
 
 public class Hacha extends Herramienta {
 
-    Hacha(Madera madera)
-    {
-        material = madera;
+
+    public Hacha(Madera madera) {
+        material = new Madera();
         desgaste = new DesgasteLineal(100,2,1);
     }
-    Hacha(Piedra piedra)
-    {
-        material = piedra;
+    public Hacha(Piedra piedra) {
+        material = new Piedra();
         desgaste = new DesgasteLineal(200,5,1);
     }
-    Hacha(Metal metal)
-    {
-        material = metal;
+    public Hacha(Metal metal) {
+        material = new Metal();
         desgaste = new DesgasteLineal(400,10,0.5);
     }
 
     @Override
-    public  void DesgastarMaterial(Material madera) {
+    public void golpearMaterial( Material material ){
 
+        this.material.golpear(this, material, this.desgaste);
     }
 }

@@ -9,24 +9,23 @@ import fiuba.algo3.Materiales.Piedra;
 
 public class Pico extends Herramienta {
 
-    Pico(Madera madera)
-    {
-        material = madera;
+
+    public Pico(Madera madera) {
+        material = new Madera();
         desgaste = new DesgasteLineal(100,2,1);
     }
-    Pico(Piedra piedra)
-    {
-        material = piedra;
+    public Pico(Piedra piedra) {
+        material = new Piedra();
         desgaste = new DesgasteLineal(200,4,1/1.5);
     }
-    Pico(Metal metal)
-    {
-        material = metal;
-        desgaste = new DesgastePorUsos(400,10);
+    public Pico(Metal metal) {
+        material = new Metal();
+        desgaste = new DesgastePorUsos(400,10, 12);
     }
 
     @Override
-    public void DesgastarMaterial(Material madera) {
+    public void golpearMaterial( Material material ){
 
+        this.material.golpear(this, material, this.desgaste);
     }
 }

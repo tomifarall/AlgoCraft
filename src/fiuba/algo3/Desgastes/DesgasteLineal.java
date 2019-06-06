@@ -17,6 +17,7 @@ public class DesgasteLineal extends Desgaste {
         if (multiplicador  <= 0 || multiplicador > 1) throw new MultiplicadorDeFuerzaInvalidoException();
 
         this.durabilidad = durabilidadInicial;
+        this.fuerza = fuerza;
         this.restador = (int) (fuerza*multiplicador);
     }
 
@@ -27,10 +28,11 @@ public class DesgasteLineal extends Desgaste {
         durabilidad -= restador;
     }
 
+    @Override
     public void usar(int fuerza) {
         if (durabilidad <= 0) throw new NoSePuedeUsarSinDurabilidadException();
         if (fuerza  <= 0) throw new FuerzaInvalidaException();
 
-        durabilidad-=fuerza;
+        durabilidad -= fuerza;
     }
 }

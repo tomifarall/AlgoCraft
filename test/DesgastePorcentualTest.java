@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class DesgastePorcentualTest {
     @Test
-    public void Test01DesgastePorcentualDaErrorConDurabilidad0{
+    public void Test01DesgastePorcentualDaErrorConDurabilidad0(){
         int durabilidad = 0;
         int porcentajeDesgaste = 2;
         try{
@@ -16,7 +16,7 @@ public class DesgastePorcentualTest {
     }
 
     @Test
-    public void Test02DesgastePorcentualDaErrorConDurabilidadNegativa{
+    public void Test02DesgastePorcentualDaErrorConDurabilidadNegativa(){
         int durabilidad = -1;
         int porcentajeDesgaste = 2;
         try{
@@ -25,7 +25,7 @@ public class DesgastePorcentualTest {
     }
 
     @Test
-    public void Test03DesgastePorcentualSeCreaConLaDurabilidadRecibidaPorParametro{
+    public void Test03DesgastePorcentualSeCreaConLaDurabilidadRecibidaPorParametro(){
         int durabilidad = 2;
         int porcentajeDesgaste = 2;
         DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
@@ -33,7 +33,7 @@ public class DesgastePorcentualTest {
         Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
     }
     @Test
-    public void Test04DesgastePorcentualDaErrorConPorcentaje0{
+    public void Test04DesgastePorcentualDaErrorConPorcentaje0(){
         int durabilidad = 2;
         int porcentajeDesgaste = 0;
         try{
@@ -42,16 +42,16 @@ public class DesgastePorcentualTest {
     }
 
     @Test
-    public void Test05DesgastePorcentualDaErrorConPorcentajeNegativos{
+    public void Test05DesgastePorcentualDaErrorConPorcentajeNegativos(){
         int durabilidad = 2;
         int porcentajeDesgaste = -1;
         try{
             DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
-        } catch(NoSePuedeUsarSinDurabilidadException e){}
+        } catch(NoSePuedeUsarSinPorcentajeDesgasteException e){}
     }
 
     @Test
-    public void Test06DesgastePorcentualSeCreaConLaDurabilidadRecibidaPorParametro{
+    public void Test06DesgastePorcentualSeCreaConLaDurabilidadRecibidaPorParametro(){
         int durabilidad = 2;
         int porcentajeDesgaste = 1;
         DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
@@ -59,7 +59,7 @@ public class DesgastePorcentualTest {
         Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
     }
     @Test
-    public void Test07DesgastePorcentualSeReduceSegunElPorcentaje{
+    public void Test07DesgastePorcentualSeReduceSegunElPorcentaje(){
         int durabilidad = 2;
         int porcentajeDesgaste = 2;
         DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);

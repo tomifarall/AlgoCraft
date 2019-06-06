@@ -1,5 +1,6 @@
 package fiuba.algo3.Herramientas;
 
+import fiuba.algo3.Desgastes.Desgaste;
 import fiuba.algo3.Materiales.Material;
 
 
@@ -8,13 +9,16 @@ import fiuba.algo3.Materiales.Material;
 
 public abstract class Herramienta {
 
+    protected Desgaste desgaste;
 
+    protected Material material;
 
     public int getDurabilidad() {
-        return 0;
+        return desgaste.getDurabilidad();
     }
 
-    public int getFuerza(){ return 0; }
+    public int getFuerza(){ return desgaste.getFuerza(); }
 
-    public abstract void DesgastarMaterial( Material madera);
+    public void golpearMaterial( Material material ){
+    }
 }

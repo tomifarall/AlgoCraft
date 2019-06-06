@@ -15,4 +15,9 @@ public class DesgastePorcentual extends Desgaste {
     public void usar() {
         durabilidad -= (int) durabilidad * porcentajeDesgaste;
     }
+
+    @Override
+    public void usar(int fuerza) {
+        durabilidad -= (int) durabilidad * porcentajeDesgaste;
+    }
 }
