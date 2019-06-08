@@ -20,17 +20,17 @@ public class Metal extends Material {
 
 
     @Override
-    public void golpear(Hacha hacha, Material material, Desgaste desgaste) {
-        material.serGolpeado(hacha,this,desgaste);
+    public void golpearMaterial(Hacha hacha, Material material) {
+        hacha.golpearMaterial(material,this);
     }
 
     @Override
-    public void golpear(Pico pico, Material material, Desgaste desgaste) {
-        material.serGolpeado(pico,this,desgaste);
+    public void golpearMaterial(Pico pico, Material material) {
+        pico.golpearMaterial(material,this);
     }
 
     /*@Override
-    public void golpear(PicoFino picoFino, Material material, Desgaste desgaste) {
+    public void golpearMaterial(PicoFino picoFino, Material material, Desgaste desgaste) {
         material.serGolpeado(picoFino,this,desgaste);
     }*/
 

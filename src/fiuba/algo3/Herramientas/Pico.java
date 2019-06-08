@@ -2,10 +2,7 @@ package fiuba.algo3.Herramientas;
 
 import fiuba.algo3.Desgastes.DesgasteLineal;
 import fiuba.algo3.Desgastes.DesgastePorUsos;
-import fiuba.algo3.Materiales.Madera;
-import fiuba.algo3.Materiales.Material;
-import fiuba.algo3.Materiales.Metal;
-import fiuba.algo3.Materiales.Piedra;
+import fiuba.algo3.Materiales.*;
 
 public class Pico extends Herramienta {
 
@@ -26,6 +23,27 @@ public class Pico extends Herramienta {
     @Override
     public void golpearMaterial( Material material ){
 
-        this.material.golpear(this, material, this.desgaste);
+        this.material.golpearMaterial(this, material);
+    }
+
+    @Override
+    public void golpearMaterial( Material material , Madera maderaHerramienta){
+
+        material.serGolpeado(this, maderaHerramienta, this.desgaste);
+    }
+    @Override
+    public void golpearMaterial( Material material , Piedra piedraHerramienta){
+
+        material.serGolpeado(this, piedraHerramienta, this.desgaste);
+    }
+    @Override
+    public void golpearMaterial( Material material , Metal metalHerramienta){
+
+        material.serGolpeado(this, metalHerramienta, this.desgaste);
+    }
+    @Override
+    public void golpearMaterial( Material material , Diamante diamante){
+
+
     }
 }

@@ -18,11 +18,11 @@ public abstract class Material {
 
     public int getDurabilidad() { return desgaste.getDurabilidad();}
 
-    public abstract void golpear(Hacha hacha, Material material, Desgaste desgaste);
+    public abstract void golpearMaterial(Hacha hacha, Material material);
 
-    public abstract void golpear(Pico pico, Material material, Desgaste desgaste);
+    public abstract void golpearMaterial(Pico pico, Material material);
 
-    /*public abstract void golpear(PicoFino picoFino, Material material, Desgaste desgaste);*/
+    /*public abstract void golpearMaterial(PicoFino picoFino, Material material, Desgaste desgaste);*/
 
     public abstract void serGolpeado(Hacha hacha, Madera madera, Desgaste desgaste);
 

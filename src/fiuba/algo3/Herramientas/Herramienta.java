@@ -1,10 +1,7 @@
 package fiuba.algo3.Herramientas;
 
 import fiuba.algo3.Desgastes.Desgaste;
-import fiuba.algo3.Materiales.Material;
-
-
-
+import fiuba.algo3.Materiales.*;
 
 
 public abstract class Herramienta {
@@ -21,4 +18,8 @@ public abstract class Herramienta {
 
     public void golpearMaterial( Material material ){
     }
+    public abstract void golpearMaterial(Material material, Madera maderaHerramienta);
+    public abstract void golpearMaterial(Material material, Piedra piedraHerramienta);
+    public abstract void golpearMaterial(Material material, Metal metalHerramienta);
+    public abstract void golpearMaterial(Material material, Diamante diamanteHerramienta);
 }
