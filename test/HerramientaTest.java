@@ -241,14 +241,17 @@ public class HerramientaTest {
         int durabilidadPicoFino = picoFino.getDurabilidad();
 
         //Uso el PicoFino contra el Diamante y por cada uso deberia restarse a su durabilidad su durabilidad sobre 10.
+        durabilidadPicoFino-= durabilidadPicoFino/10;
+        picoFino.golpearMaterial(diamante);
+        durabilidadPicoFino-= durabilidadPicoFino/10;
+        picoFino.golpearMaterial(diamante);
+        durabilidadPicoFino-= durabilidadPicoFino/10;
+        picoFino.golpearMaterial(diamante);
+        durabilidadPicoFino-= durabilidadPicoFino/10;
+        picoFino.golpearMaterial(diamante);
 
-        picoFino.golpearMaterial(diamante);
-        picoFino.golpearMaterial(diamante);
-        picoFino.golpearMaterial(diamante);
-        picoFino.golpearMaterial(diamante);
 
-
-        Assert.assertEquals((durabilidadPicoFino - 4*( durabilidadPicoFino / 10 ))  , picoFino.getDurabilidad() );
+        Assert.assertEquals(durabilidadPicoFino  , picoFino.getDurabilidad() );
     }
 
     @Test

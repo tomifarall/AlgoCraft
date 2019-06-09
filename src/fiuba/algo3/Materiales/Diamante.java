@@ -5,6 +5,7 @@ import fiuba.algo3.Desgastes.DesgasteLineal;
 import fiuba.algo3.Desgastes.NoSePuedeUsarSinDurabilidadException;
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
+import fiuba.algo3.Herramientas.PicoFino;
 
 public class Diamante extends Material {
     public Diamante(){
@@ -60,4 +61,9 @@ public class Diamante extends Material {
     public void serGolpeado(Pico pico, Metal metal, Desgaste desgaste){
         desgaste.usar();
     }
+
+    public void serGolpeado(PicoFino pico, MaterialPicoFino material, Desgaste desgaste){
+        desgaste.usar();
+    }
+
 }

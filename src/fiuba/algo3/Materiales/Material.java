@@ -37,5 +37,10 @@ public abstract class Material {
     public abstract void serGolpeado(Pico pico, Metal metal, Desgaste desgaste);
 
 
+    protected void serGolpeado(PicoFino picoFino, MaterialPicoFino materialPicoFino, Desgaste desgaste) {
+    }
 
+    public void golpearMaterial(PicoFino picoFino, Material material, Desgaste desgaste){
+
+    }
 }
