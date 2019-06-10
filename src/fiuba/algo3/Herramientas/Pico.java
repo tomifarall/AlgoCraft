@@ -1,49 +1,35 @@
 package fiuba.algo3.Herramientas;
-
 import fiuba.algo3.Desgastes.DesgasteLineal;
 import fiuba.algo3.Desgastes.DesgastePorUsos;
-import fiuba.algo3.Materiales.*;
+import fiuba.algo3.Materiales.Material;
+import fiuba.algo3.Materiales.MaterialHerramienta;
+import fiuba.algo3.Materiales.MaterialHerramientaMadera;
+import fiuba.algo3.Materiales.MaterialMapaMadera;
+import fiuba.algo3.Materiales.MaterialMapa;
+import fiuba.algo3.Materiales.MaterialMapaMetal;
+import fiuba.algo3.Materiales.MaterialHerramientaMetal;
+import fiuba.algo3.Materiales.MaterialMapaPiedra;
+import fiuba.algo3.Materiales.MaterialHerramientaPiedra;
 
 public class Pico extends Herramienta {
 
 
-    public Pico(Madera madera) {
-        material = new Madera();
+    public Pico(MaterialMapaMadera madera) {
+        material = new MaterialHerramientaMadera();
         desgaste = new DesgasteLineal(100,2,1);
     }
-    public Pico(Piedra piedra) {
-        material = new Piedra();
+    public Pico(MaterialMapaPiedra piedra) {
+        material = new MaterialHerramientaPiedra();
         desgaste = new DesgasteLineal(200,4,1/1.5);
     }
-    public Pico(Metal metal) {
-        material = new Metal();
+    public Pico(MaterialMapaMetal metal) {
+        material = new MaterialHerramientaMetal();
         desgaste = new DesgastePorUsos(400,10, 12);
     }
 
     @Override
-    public void golpearMaterial( Material material ){
+    public void golpearMaterial( MaterialMapa material ){
 
-        this.material.golpearMaterial(this, material);
-    }
-
-    @Override
-    public void golpearMaterial( Material material , Madera maderaHerramienta){
-
-        material.serGolpeado(this, maderaHerramienta, this.desgaste);
-    }
-    @Override
-    public void golpearMaterial( Material material , Piedra piedraHerramienta){
-
-        material.serGolpeado(this, piedraHerramienta, this.desgaste);
-    }
-    @Override
-    public void golpearMaterial( Material material , Metal metalHerramienta){
-
-        material.serGolpeado(this, metalHerramienta, this.desgaste);
-    }
-    @Override
-    public void golpearMaterial( Material material , Diamante diamante){
-
-
+        this.material.golpear(this, material, this.desgaste);
     }
 }

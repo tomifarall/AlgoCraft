@@ -17,28 +17,4 @@ public abstract class Material {
     protected abstract void inicializarDesgaste();
 
     public int getDurabilidad() { return desgaste.getDurabilidad();}
-
-    public abstract void golpear(Hacha hacha, Material material, Desgaste desgaste);
-
-    public abstract void golpear(Pico pico, Material material, Desgaste desgaste);
-
-    public void golpear(PicoFino picoFino, Material material, Desgaste desgaste){
-
-    }
-
-    public abstract void serGolpeado(Hacha hacha, Madera madera, Desgaste desgaste);
-
-    public abstract void serGolpeado(Hacha hacha, Piedra piedra, Desgaste desgaste);
-
-    public abstract void serGolpeado(Hacha hacha, Metal metal, Desgaste desgaste);
-
-    public abstract void serGolpeado(Pico pico, Madera madera, Desgaste desgaste);
-
-    public abstract void serGolpeado(Pico pico, Piedra piedra, Desgaste desgaste);
-
-    public abstract void serGolpeado(Pico pico, Metal metal, Desgaste desgaste);
-
-    protected void serGolpeado(PicoFino picoFino, MaterialPicoFino materialPicoFino, Desgaste desgaste){
-
-    }
 }

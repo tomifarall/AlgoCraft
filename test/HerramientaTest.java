@@ -2,11 +2,11 @@ import fiuba.algo3.Herramientas.Herramienta;
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
 import fiuba.algo3.Herramientas.PicoFino;
-import fiuba.algo3.Materiales.Diamante;
-import fiuba.algo3.Materiales.Madera;
+import fiuba.algo3.Materiales.MaterialMapaDiamante;
+import fiuba.algo3.Materiales.MaterialMapaMadera;
 import fiuba.algo3.Materiales.Material;
-import fiuba.algo3.Materiales.Metal;
-import fiuba.algo3.Materiales.Piedra;
+import fiuba.algo3.Materiales.MaterialMapaMetal;
+import fiuba.algo3.Materiales.MaterialMapaPiedra;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class HerramientaTest {
 
 	@Test
 	public void Test01HachaDeMaderaDeberiaCrearseConLaDurabilidadEsperada(){
-	    Madera madera = new Madera();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
         Herramienta hacha = new Hacha(madera);
         int resultado = hacha.getDurabilidad();
 
@@ -23,7 +23,7 @@ public class HerramientaTest {
 
     @Test
     public  void Test02HachaDeMaderaDeberiaCrearseConLaFuerzaEsperada(){
-        Madera madera = new Madera();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
         Herramienta hacha = new Hacha(madera);
 	    int resultado = hacha.getFuerza();
 
@@ -33,7 +33,7 @@ public class HerramientaTest {
 
     @Test
     public void Test03PicoDeMaderaDeberiaCrearseConLaDurabilidadEsperada(){
-        Madera madera = new Madera();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
         Herramienta pico = new Pico(madera);
         int resultado = pico.getDurabilidad();
 
@@ -42,7 +42,7 @@ public class HerramientaTest {
 
     @Test
     public  void Test04PicoDeMaderaDeberiaCrearseConLaFuerzaEsperada(){
-        Madera madera = new Madera();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
 	    Herramienta pico = new Pico(madera);
         int resultado = pico.getFuerza();
 
@@ -51,7 +51,7 @@ public class HerramientaTest {
 
     @Test
     public void Test05HachaDeMetalDeberiaCrearseConLaDurabilidadEsperada(){
-        Metal metal = new Metal();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
 	    Herramienta hacha = new Hacha(metal);
         int resultado = hacha.getDurabilidad();
 
@@ -60,7 +60,7 @@ public class HerramientaTest {
 
     @Test
     public  void Test06HachaDeMetalDeberiaCrearseConLaFuerzaEsperada(){
-        Metal metal = new Metal();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
         Herramienta hacha = new Hacha(metal);
         int resultado = hacha.getFuerza();
 
@@ -68,7 +68,7 @@ public class HerramientaTest {
     }
     @Test
     public void Test07PicoDeMetalDeberiaCrearseConLaDurabilidadEsperada(){
-        Metal metal = new Metal();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
 	    Herramienta pico = new Pico(metal);
         int resultado = pico.getDurabilidad();
 
@@ -77,7 +77,7 @@ public class HerramientaTest {
 
     @Test
     public  void Test08PicoDeMetalDeberiaCrearseConLaFuerzaEsperada(){
-        Metal metal = new Metal();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
 	    Herramienta pico = new Pico(metal);
         int resultado = pico.getFuerza();
 
@@ -86,10 +86,10 @@ public class HerramientaTest {
 
     @Test
     public void Test09HachadeMaderaDeberiaDebilitarseCorrectamenteCuandoSeUsaContraLosMateriales(){
-	    Madera madera = new Madera();
-	    Piedra piedra = new Piedra();
-	    Metal metal = new Metal();
-	    Diamante diamante = new Diamante();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
+        MaterialMapaPiedra piedra = new MaterialMapaPiedra();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
+        MaterialMapaDiamante diamante = new MaterialMapaDiamante();
 	    Herramienta hacha = new Hacha(madera);
 	    int durabilidadHacha = hacha.getDurabilidad();
 	    int fuerzaHacha = hacha.getFuerza();
@@ -107,10 +107,10 @@ public class HerramientaTest {
 
     @Test
     public void Test10HachaDePiedraDeberiaDebilitarseCorrectamenteCuandoSeUsaContraLosMateriales(){
-        Madera madera = new Madera();
-        Piedra piedra = new Piedra();
-        Metal metal = new Metal();
-        Diamante diamante = new Diamante();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
+        MaterialMapaPiedra piedra = new MaterialMapaPiedra();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
+        MaterialMapaDiamante diamante = new MaterialMapaDiamante();
         Herramienta hacha = new Hacha(piedra);
         int durabilidadHacha = hacha.getDurabilidad();
         int fuerzaHacha = hacha.getFuerza();
@@ -128,10 +128,10 @@ public class HerramientaTest {
 
     @Test
     public void Test11HachadeMetalDeberiaDebilitarseCorrectamenteCuandoSeUsaContraLosMateriales(){
-        Madera madera = new Madera();
-        Piedra piedra = new Piedra();
-        Metal metal = new Metal();
-        Diamante diamante = new Diamante();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
+        MaterialMapaPiedra piedra = new MaterialMapaPiedra();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
+        MaterialMapaDiamante diamante = new MaterialMapaDiamante();
         Herramienta hacha = new Hacha(metal);
         int durabilidadHacha = hacha.getDurabilidad();
         int fuerzaHacha = hacha.getFuerza();
@@ -150,10 +150,10 @@ public class HerramientaTest {
 
     @Test
     public void Test12PicodeMaderaDeberiaDebilitarseCorrectamenteCuandoSeUsaContraLosMateriales(){
-        Madera madera = new Madera();
-        Piedra piedra = new Piedra();
-        Metal metal = new Metal();
-        Diamante diamante = new Diamante();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
+        MaterialMapaPiedra piedra = new MaterialMapaPiedra();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
+        MaterialMapaDiamante diamante = new MaterialMapaDiamante();
         Herramienta pico = new Pico(madera);
         int durabilidadPico = pico.getDurabilidad();
         int fuerzaPico = pico.getFuerza();
@@ -171,10 +171,10 @@ public class HerramientaTest {
 
     @Test
     public void Test13PicoDePiedraDeberiaDebilitarseCorrectamenteCuandoSeUsaContraLosMateriales(){
-        Madera madera = new Madera();
-        Piedra piedra = new Piedra();
-        Metal metal = new Metal();
-        Diamante diamante = new Diamante();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
+        MaterialMapaPiedra piedra = new MaterialMapaPiedra();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
+        MaterialMapaDiamante diamante = new MaterialMapaDiamante();
         Herramienta pico = new Pico(piedra);
         int durabilidadPico = pico.getDurabilidad();
         int fuerzaPico = pico.getFuerza();
@@ -192,10 +192,10 @@ public class HerramientaTest {
 
     @Test
     public void Test14PicoDeMetalDeberiaDebilitarseCorrectamenteCuandoSeUsaContraLosMateriales(){
-        Madera madera = new Madera();
-        Piedra piedra = new Piedra();
-        Metal metal = new Metal();
-        Diamante diamante = new Diamante();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
+        MaterialMapaPiedra piedra = new MaterialMapaPiedra();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
+        MaterialMapaDiamante diamante = new MaterialMapaDiamante();
         Herramienta pico = new Pico(metal);
         int durabilidadPico = pico.getDurabilidad();
 
@@ -212,10 +212,10 @@ public class HerramientaTest {
 
     @Test
     public void Test13PicoDeMetalDeberiaRomperseCuandoSeUsa10Veces() {
-        Madera madera = new Madera();
-        Piedra piedra = new Piedra();
-        Metal metal = new Metal();
-        Diamante diamante = new Diamante();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
+        MaterialMapaPiedra piedra = new MaterialMapaPiedra();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
+        MaterialMapaDiamante diamante = new MaterialMapaDiamante();
         Herramienta pico = new Pico(metal);
 
 
@@ -236,18 +236,19 @@ public class HerramientaTest {
     @Test
     public void Test15PicoFinoDeberiaDebilitarseCorrectamenteCuandoSeUsaContraDiamante(){
 
-        Material diamante = new Diamante();
+        MaterialMapaDiamante diamante = new MaterialMapaDiamante();
         Herramienta picoFino = new PicoFino();
         int durabilidadPicoFino = picoFino.getDurabilidad();
 
         //Uso el PicoFino contra el Diamante y por cada uso deberia restarse a su durabilidad su durabilidad sobre 10.
-        durabilidadPicoFino-= durabilidadPicoFino/10;
+
+        durabilidadPicoFino-= picoFino.getDurabilidad()/10;
         picoFino.golpearMaterial(diamante);
-        durabilidadPicoFino-= durabilidadPicoFino/10;
+        durabilidadPicoFino-= picoFino.getDurabilidad()/10;
         picoFino.golpearMaterial(diamante);
-        durabilidadPicoFino-= durabilidadPicoFino/10;
+        durabilidadPicoFino-= picoFino.getDurabilidad()/10;
         picoFino.golpearMaterial(diamante);
-        durabilidadPicoFino-= durabilidadPicoFino/10;
+        durabilidadPicoFino-= picoFino.getDurabilidad()/10;
         picoFino.golpearMaterial(diamante);
 
 
@@ -257,9 +258,9 @@ public class HerramientaTest {
     @Test
     public void Test16PicoFinoNoDeberiaDebilitarseCuandoSeUsaContraMaterialesQueNoSeanDiamante() {
 
-        Material madera = new Madera();
-        Material piedra = new Piedra();
-        Material metal = new Metal();
+        MaterialMapaMadera madera = new MaterialMapaMadera();
+        MaterialMapaPiedra piedra = new MaterialMapaPiedra();
+        MaterialMapaMetal metal = new MaterialMapaMetal();
         Herramienta picoFino = new PicoFino();
         int durabilidadPicoFino = picoFino.getDurabilidad();
 

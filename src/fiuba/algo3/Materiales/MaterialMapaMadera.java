@@ -7,9 +7,9 @@ import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
 import fiuba.algo3.Herramientas.PicoFino;
 
-public class Madera extends Material {
+public class MaterialMapaMadera extends MaterialMapa {
 
-    public Madera(){
+    public MaterialMapaMadera(){
        this.inicializarDesgaste();
     }
 
@@ -20,22 +20,7 @@ public class Madera extends Material {
 
 
     @Override
-    public void golpearMaterial(Hacha hacha, Material material) {
-        hacha.golpearMaterial(material,this);
-    }
-
-    @Override
-    public void golpearMaterial(Pico pico, Material material) {
-        pico.golpearMaterial(material,this);
-    }
-
-    /*@Override
-    public void golpearMaterial(PicoFino picoFino, Material material, Desgaste desgaste) {
-        material.serGolpeado(picoFino,this,desgaste);
-    }*/
-
-    @Override
-    public void serGolpeado(Hacha hacha, Madera madera, Desgaste desgaste) {
+    public void serGolpeado(Hacha hacha, MaterialHerramientaMadera madera, Desgaste desgaste) {
         try {
             desgaste.usar();
         }catch (NoSePuedeUsarSinDurabilidadException e){}
@@ -43,7 +28,7 @@ public class Madera extends Material {
     }
 
     @Override
-    public void serGolpeado(Hacha hacha, Piedra piedra, Desgaste desgaste){
+    public void serGolpeado(Hacha hacha, MaterialHerramientaPiedra piedra, Desgaste desgaste){
         try {
             desgaste.usar();
         }catch (NoSePuedeUsarSinDurabilidadException e){}
@@ -51,7 +36,7 @@ public class Madera extends Material {
     }
 
     @Override
-    public void serGolpeado(Hacha hacha, Metal metal, Desgaste desgaste){
+    public void serGolpeado(Hacha hacha, MaterialHerramientaMetal metal, Desgaste desgaste){
         try {
             desgaste.usar();
         }catch (NoSePuedeUsarSinDurabilidadException e){}
@@ -59,17 +44,17 @@ public class Madera extends Material {
     }
 
     @Override
-    public void serGolpeado(Pico pico, Madera madera, Desgaste desgaste){
+    public void serGolpeado(Pico pico, MaterialHerramientaMadera madera, Desgaste desgaste){
         desgaste.usar();
     }
 
     @Override
-    public void serGolpeado(Pico pico, Piedra piedra, Desgaste desgaste){
+    public void serGolpeado(Pico pico, MaterialHerramientaPiedra piedra, Desgaste desgaste){
         desgaste.usar();
     }
 
     @Override
-    public void serGolpeado(Pico pico, Metal metal, Desgaste desgaste){
+    public void serGolpeado(Pico pico, MaterialHerramientaMetal metal, Desgaste desgaste){
         desgaste.usar();
     }
 }
