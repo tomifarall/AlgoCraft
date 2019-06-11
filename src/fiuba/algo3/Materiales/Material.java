@@ -6,15 +6,32 @@ import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
 import fiuba.algo3.Herramientas.PicoFino;
 
-public abstract class Material {
+public abstract class Material implements IMaterialHerramienta, IMaterialMapa{
 
-    protected Desgaste desgaste;
+    protected int durabilidad;
 
-    public Material() {
-        this.inicializarDesgaste();
-    }
+    public int getDurabilidad() { return this.durabilidad;}
 
-    protected abstract void inicializarDesgaste();
+    protected void debilitarse(int fuerza) { this.durabilidad -= fuerza; }
 
-    public int getDurabilidad() { return desgaste.getDurabilidad();}
+    public abstract void golpearMaterial(Hacha hacha, IMaterialMapa material);
+
+    public abstract void golpearMaterial(Pico pico, IMaterialMapa material);
+
+    public abstract void golpearMaterial(PicoFino picoFino, IMaterialMapa material);
+
+    public abstract void serGolpeado(Hacha hacha, Madera madera, Desgaste desgaste);
+
+    public abstract void serGolpeado(Hacha hacha, Piedra piedra, Desgaste desgaste);
+
+    public abstract void serGolpeado(Hacha hacha, Metal metal, Desgaste desgaste);
+
+    public abstract void serGolpeado(Pico pico, Madera madera, Desgaste desgaste);
+
+    public abstract void serGolpeado(Pico pico, Piedra piedra, Desgaste desgaste);
+
+    public abstract void serGolpeado(Pico pico, Metal metal, Desgaste desgaste);
+
+    public abstract void serGolpeado(PicoFino picoFino, MaterialPicoFino materialPicoFino, Desgaste desgaste);
+
 }

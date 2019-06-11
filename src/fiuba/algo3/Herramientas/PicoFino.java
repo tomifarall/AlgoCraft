@@ -1,18 +1,32 @@
 package fiuba.algo3.Herramientas;
 
-import fiuba.algo3.Desgastes.DesgastePorcentual;
-import fiuba.algo3.Materiales.MaterialMapa;
-import fiuba.algo3.Materiales.MaterialHerramientaPicoFino;
+import fiuba.algo3.Materiales.*;
 
 public class PicoFino extends Herramienta {
 
+    @Override
+    public void golpearMaterial( IMaterialMapa material ){
 
-    public PicoFino() {
-        material = new MaterialHerramientaPicoFino();
-        desgaste = new DesgastePorcentual(1000,0.1);
+        this.material.golpearMaterial(this, material);
+    }
+    @Override
+    public void golpearMaterial( IMaterialMapa material , Madera maderaHerramienta){
+
+    }
+    @Override
+    public void golpearMaterial( IMaterialMapa material , Piedra piedraHerramienta){
     }
 
-    public void golpearMaterial( MaterialMapa materialMapa){
-            this.material.golpear(this, materialMapa, this.desgaste);
+    @Override
+    public void golpearMaterial( IMaterialMapa material , Metal metalHerramienta){
+
+    }
+    @Override
+    public void golpearMaterial( IMaterialMapa material , Diamante diamante){
+
+    }
+
+    public void golpearMaterial( IMaterialMapa material , MaterialPicoFino materialPicoFino){
+        material.serGolpeado(this, materialPicoFino, this.desgaste);
     }
 }

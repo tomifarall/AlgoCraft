@@ -18,10 +18,4 @@ public class DesgastePorUsos extends Desgaste {
         this.usos--;
         if (usos <= 0) durabilidad = 0;
     }
-    @Override
-    public void usar(int fuerza) {
-        if(durabilidad <= 0) throw new NoSePuedeUsarSinDurabilidadException();
-        this.usos--;
-        if (usos <= 0) durabilidad = 0;
-    }
 }

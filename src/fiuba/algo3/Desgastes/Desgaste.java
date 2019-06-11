@@ -14,6 +14,5 @@ public abstract class Desgaste {
     }
 
     public abstract void usar();
-    public abstract void usar(int fuerza);
 }
 

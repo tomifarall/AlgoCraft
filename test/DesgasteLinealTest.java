@@ -7,30 +7,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class DesgasteLinealTest {
-    @Test
-    public void Test01DesgasteLinealDaErrorConDurabilidad0(){
-        try{
-            DesgasteLineal desgaste = new DesgasteLineal(0);
-        } catch(NoSePuedeUsarSinDurabilidadException e){}
-    }
 
     @Test
-    public void Test02DesgasteLinealDaErrorConDurabilidadNegativa(){
-        try{
-            DesgasteLineal desgaste = new DesgasteLineal(-1);
-        } catch(NoSePuedeUsarSinDurabilidadException e){}
-    }
-
-    @Test
-    public void Test03DesgasteLinealSeCreaConLaDurabilidadRecibidaPorParametro(){
-        int durabilidad = 5;
-        DesgasteLineal desgaste = new DesgasteLineal(durabilidad);
-
-        Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
-    }
-
-    @Test
-    public void Test04DesgasteLinealDaErrorConMultiplicador0(){
+    public void Test01DesgasteLinealDaErrorConMultiplicador0(){
         int durabilidad = 5;
         double multiplicador = 0;
         int fuerza = 2;
@@ -40,7 +19,7 @@ public class DesgasteLinealTest {
     }
 
     @Test
-    public void Test05DesgasteLinealDaErrorConMultiplicadorMayorAUno(){
+    public void Test02DesgasteLinealDaErrorConMultiplicadorMayorAUno(){
         int durabilidad = 5;
         double multiplicador = 1.1;
         int fuerza = 2;
@@ -49,7 +28,7 @@ public class DesgasteLinealTest {
         }catch (MultiplicadorDeFuerzaInvalidoException e){}
     }
     @Test
-    public void Test06DesgasteLinealDaErrorConFuerza0(){
+    public void Test03DesgasteLinealDaErrorConFuerza0(){
         int durabilidad = 5;
         double multiplicador = 0.1;
         int fuerza = 0;
@@ -59,7 +38,7 @@ public class DesgasteLinealTest {
     }
 
     @Test
-    public void Test07DesgasteLinealDaErrorConFuerzaNegativa(){
+    public void Test04DesgasteLinealDaErrorConFuerzaNegativa(){
         int durabilidad = 5;
         double multiplicador = 0.1;
         int fuerza = -1;
@@ -68,7 +47,7 @@ public class DesgasteLinealTest {
         }catch (FuerzaInvalidaException e){}
     }
     @Test
-    public void Test08DesgasteLinealSeCreaConLaDurabilidadRecibidaPorParametroConFuerzaYMultiplicador(){
+    public void Test05DesgasteLinealSeCreaConLaDurabilidadRecibidaPorParametroConFuerzaYMultiplicador(){
         int durabilidad = 5;
         double multiplicador = 0.1;
         int fuerza = 2;
@@ -78,7 +57,7 @@ public class DesgasteLinealTest {
     }
 
     @Test
-    public void Test09DesgasteLinealSeDesgastaCorrectamente(){
+    public void Test06DesgasteLinealSeDesgastaCorrectamente(){
         int durabilidad = 5;
         double multiplicador = 0.5;
         int fuerza = 2;
@@ -92,18 +71,5 @@ public class DesgasteLinealTest {
         desgaste.usar();
         Assert.assertEquals( durabilidad-3*(int)(fuerza*multiplicador) , desgaste.getDurabilidad());
     }
-    @Test
-    public void Test09DesgasteLinealSeDesgastaCorrectamentePasandoleFuerza(){
-        int durabilidad = 5;
-        int fuerza = 2;
-        DesgasteLineal desgaste = new DesgasteLineal(durabilidad);
 
-        Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
-        desgaste.usar(fuerza);
-        Assert.assertEquals( durabilidad-fuerza , desgaste.getDurabilidad());
-        desgaste.usar(fuerza);
-        Assert.assertEquals( durabilidad-2*fuerza , desgaste.getDurabilidad());
-        desgaste.usar(fuerza);
-        Assert.assertEquals( durabilidad-3*fuerza , desgaste.getDurabilidad());
-    }
 }

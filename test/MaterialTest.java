@@ -2,9 +2,9 @@
 
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
-import fiuba.algo3.Materiales.MaterialMapaMadera;
-import fiuba.algo3.Materiales.MaterialMapaMetal;
-import fiuba.algo3.Materiales.MaterialMapaPiedra;
+import fiuba.algo3.Materiales.Madera;
+import fiuba.algo3.Materiales.Metal;
+import fiuba.algo3.Materiales.Piedra;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -12,8 +12,8 @@ public class MaterialTest {
 
     @Test
     public void test01MaderaSeGolpeaConHachaDeMaderaYSeReduceLaDurabilidadDelMaterial() {
-        MaterialMapaMadera madera = new MaterialMapaMadera();
-        MaterialMapaMadera maderaMapa = new MaterialMapaMadera();
+        Madera madera = new Madera();
+        Madera maderaMapa = new Madera();
         Hacha hacha = new Hacha(madera);
 
         hacha.golpearMaterial(maderaMapa);
@@ -23,8 +23,8 @@ public class MaterialTest {
 
     @Test
     public void test02PiedraSeGolpeaConUnHachaYNoSeReduceLaDurabilidadDelMaterial() {
-        MaterialMapaPiedra piedraMapa = new MaterialMapaPiedra();
-        MaterialMapaMadera madera = new MaterialMapaMadera();
+        Piedra piedraMapa = new Piedra();
+        Madera madera = new Madera();
         Hacha hacha = new Hacha(madera);
 
         hacha.golpearMaterial(piedraMapa);
@@ -33,8 +33,8 @@ public class MaterialTest {
     }
     @Test
     public void test03MetalSeGolpeaConUnPicoDeMaderaYNoSeReduceLaDurabilidadDelMaterial(){
-        MaterialMapaMetal metalMapa = new MaterialMapaMetal();
-        MaterialMapaMadera madera = new MaterialMapaMadera();
+        Metal metalMapa = new Metal();
+        Madera madera = new Madera();
         Pico pico = new Pico(madera);
 
         pico.golpearMaterial(metalMapa);

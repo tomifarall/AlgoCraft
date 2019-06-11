@@ -10,28 +10,28 @@ public class DesgastePorcentualTest {
     public void Test01DesgastePorcentualDaErrorConDurabilidad0(){
         int durabilidad = 0;
         int porcentajeDesgaste = 2;
-        boolean error=false;
+        int fuerza = 10;
         try{
-            DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
-        } catch(NoSePuedeUsarSinDurabilidadException e){error=true;}
-        Assert.assertTrue(error);
-
+            DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad,fuerza,porcentajeDesgaste);
+        } catch(NoSePuedeUsarSinDurabilidadException e){}
     }
 
     @Test
     public void Test02DesgastePorcentualDaErrorConDurabilidadNegativa(){
         int durabilidad = -1;
         int porcentajeDesgaste = 2;
+        int fuerza= 10;
         try{
-            DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad,porcentajeDesgaste);
+            DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad,fuerza,porcentajeDesgaste);
         } catch(NoSePuedeUsarSinDurabilidadException e){}
     }
 
     @Test
     public void Test03DesgastePorcentualSeCreaConLaDurabilidadRecibidaPorParametro(){
         int durabilidad = 2;
-        double porcentajeDesgaste = 0.2;
-        DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
+        int porcentajeDesgaste = 2;
+        int fuerza = 10;
+        DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, fuerza, porcentajeDesgaste);
 
         Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
     }
@@ -39,8 +39,9 @@ public class DesgastePorcentualTest {
     public void Test04DesgastePorcentualDaErrorConPorcentaje0(){
         int durabilidad = 2;
         int porcentajeDesgaste = 0;
+        int fuerza = 10;
         try{
-            DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
+            DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad,fuerza, porcentajeDesgaste);
         } catch(NoSePuedeUsarSinPorcentajeDesgasteException e){}
     }
 
@@ -48,35 +49,34 @@ public class DesgastePorcentualTest {
     public void Test05DesgastePorcentualDaErrorConPorcentajeNegativos(){
         int durabilidad = 2;
         int porcentajeDesgaste = -1;
+        int fuerza = 10;
         try{
-            DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
+            DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, fuerza, porcentajeDesgaste);
         } catch(NoSePuedeUsarSinPorcentajeDesgasteException e){}
     }
 
     @Test
     public void Test06DesgastePorcentualSeCreaConLaDurabilidadRecibidaPorParametro(){
-        int durabilidad = 100;
-        double porcentajeDesgaste = 0.5;
-        DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
+        int durabilidad = 2;
+        int porcentajeDesgaste = 1;
+        int fuerza = 10;
+        DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, fuerza, porcentajeDesgaste);
 
         Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
     }
     @Test
     public void Test07DesgastePorcentualSeReduceSegunElPorcentaje(){
-        int durabilidad = 100;
-        double porcentajeDesgaste = 0.2;
-        DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, porcentajeDesgaste);
+        int durabilidad = 2;
+        int porcentajeDesgaste = 2;
+        int fuerza = 10;
+        DesgastePorcentual desgaste = new DesgastePorcentual(durabilidad, fuerza, porcentajeDesgaste);
 
         Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
         desgaste.usar();
-        durabilidad-=(int) (durabilidad*porcentajeDesgaste);
-        Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
+        Assert.assertEquals( durabilidad*(1-porcentajeDesgaste) , desgaste.getDurabilidad());
         desgaste.usar();
-        durabilidad-=(int) (durabilidad*porcentajeDesgaste);
-        Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
+        Assert.assertEquals( (durabilidad*(1-porcentajeDesgaste))*(1-porcentajeDesgaste) , desgaste.getDurabilidad());
         desgaste.usar();
-        durabilidad-= (int) (durabilidad*porcentajeDesgaste);
-        Assert.assertEquals( durabilidad, desgaste.getDurabilidad());
-
+        Assert.assertEquals( ((durabilidad*(1-porcentajeDesgaste))*(1-porcentajeDesgaste))*(1-porcentajeDesgaste) , desgaste.getDurabilidad());
     }
 }
