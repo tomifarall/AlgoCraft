@@ -3,7 +3,6 @@ package fiuba.algo3.Materiales;
 import fiuba.algo3.Desgastes.Desgaste;
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
-import fiuba.algo3.Herramientas.PicoFino;
 
 public interface IMaterialMapa {
 
@@ -19,5 +18,5 @@ public interface IMaterialMapa {
 
     void serGolpeado(Pico pico, Metal metal, Desgaste desgaste);
 
-    void serGolpeado(PicoFino picoFino, MaterialPicoFino materialPicoFino, Desgaste desgaste);
+    void serGolpeado(Pico pico, MaterialPicoFino materialPicoFino, Desgaste desgaste, Fino finitud);
 }

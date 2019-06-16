@@ -1,12 +1,7 @@
 import fiuba.algo3.Herramientas.Herramienta;
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
-import fiuba.algo3.Herramientas.PicoFino;
-import fiuba.algo3.Materiales.Diamante;
-import fiuba.algo3.Materiales.Madera;
-import fiuba.algo3.Materiales.Material;
-import fiuba.algo3.Materiales.Metal;
-import fiuba.algo3.Materiales.Piedra;
+import fiuba.algo3.Materiales.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -232,13 +227,15 @@ public class HerramientaTest {
         Assert.assertEquals(0, pico.getDurabilidad());
 
     }
-}
 
-    /*@Test
+
+    @Test
     public void Test15PicoFinoDeberiaDebilitarseCorrectamenteCuandoSeUsaContraDiamante(){
 
         Material diamante = new Diamante();
-        Herramienta picoFino = new PicoFino();
+        MaterialPicoFino materialPicoFino = new MaterialPicoFino();
+        IFinitud finitud = new Fino();
+        Herramienta picoFino = new Pico(materialPicoFino, finitud);
         int durabilidadPicoFino = picoFino.getDurabilidad();
 
         //Uso el PicoFino contra el Diamante y por cada uso deberia restarse a su durabilidad su durabilidad sobre 10.
@@ -249,16 +246,21 @@ public class HerramientaTest {
         picoFino.golpearMaterial(diamante);
 
 
-        Assert.assertEquals((durabilidadPicoFino - 4*( durabilidadPicoFino / 10 ))  , picoFino.getDurabilidad() );
-    }*/
+        //Assert.assertEquals((durabilidadPicoFino - 4*( (int)(durabilidadPicoFino / 10) ))  , picoFino.getDurabilidad() );
+        Assert.assertEquals((int)(durabilidadPicoFino*0.9*0.9*0.9*0.9)  , picoFino.getDurabilidad() );
 
-    /*@Test
+    }
+
+    @Test
     public void Test16PicoFinoNoDeberiaDebilitarseCuandoSeUsaContraMaterialesQueNoSeanDiamante() {
 
         Material madera = new Madera();
         Material piedra = new Piedra();
         Material metal = new Metal();
-        Herramienta picoFino = new PicoFino();
+        MaterialPicoFino materialPicoFino = new MaterialPicoFino();
+        IFinitud finitud = new Fino();
+        Herramienta picoFino = new Pico(materialPicoFino, finitud);
+
         int durabilidadPicoFino = picoFino.getDurabilidad();
 
         for (int i = 0; i < 5; i++) {
@@ -270,4 +272,4 @@ public class HerramientaTest {
         Assert.assertEquals(durabilidadPicoFino, picoFino.getDurabilidad());
 
     }
-}*/
+}

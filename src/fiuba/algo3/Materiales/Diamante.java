@@ -5,7 +5,6 @@ import fiuba.algo3.Desgastes.DesgasteLineal;
 import fiuba.algo3.Desgastes.NoSePuedeUsarSinDurabilidadException;
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
-import fiuba.algo3.Herramientas.PicoFino;
 
 public class Diamante extends Material {
 
@@ -23,7 +22,7 @@ public class Diamante extends Material {
     }
 
     @Override
-    public void golpearMaterial(PicoFino picoFino, IMaterialMapa material){}
+    public void golpearMaterial(Pico pico, IMaterialMapa material, Fino finitud){}
 
     @Override
     public void serGolpeado(Hacha hacha, Madera madera, Desgaste desgaste) {
@@ -55,6 +54,10 @@ public class Diamante extends Material {
         desgaste.usar();
     }
 
+
     @Override
-    public void serGolpeado(PicoFino picoFino, MaterialPicoFino materialPicoFino, Desgaste desgaste){durabilidad -= desgaste.getFuerza();}
+    public void serGolpeado(Pico pico, MaterialPicoFino materialPicoFino, Desgaste desgaste, Fino finitud){
+        durabilidad -= desgaste.getFuerza();
+        desgaste.usar();
+    }
 }
