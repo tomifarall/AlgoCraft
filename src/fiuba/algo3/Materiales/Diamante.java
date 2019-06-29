@@ -5,59 +5,80 @@ import fiuba.algo3.Desgastes.DesgasteLineal;
 import fiuba.algo3.Desgastes.NoSePuedeUsarSinDurabilidadException;
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
+import fiuba.algo3.Herramientas.PicoFino;
+import fiuba.algo3.Interfaces.IMaterialMapa;
 
 public class Diamante extends Material {
+
     public Diamante(){
-        this.inicializarDesgaste();
-    }
-
-    @Override
-    protected void inicializarDesgaste(){
-        this.desgaste = new DesgasteLineal(100);
-    }
-
-    @Override
-    public void golpear(Hacha hacha, Material material, Desgaste desgaste) {
+        this.durabilidadInicial = 100;
+        this.durabilidad = this.durabilidadInicial;
     }
 
 
     @Override
-    public void golpear(Pico pico, Material material, Desgaste desgaste) {
-
+    public void golpearMaterial(Hacha hacha, IMaterialMapa material) {
+        hacha.golpearMaterial(material, this);
     }
 
-    /*@Override
-    public void golpear(PicoFino picoFino, Material material, Desgaste desgaste) {
-        material.serGolpeado(picoFino,this,desgaste);
-    }*/
+    @Override
+    public void golpearMaterial(Pico pico, IMaterialMapa material) {
+        pico.golpearMaterial(material,this);
+    }
+
+    @Override
+    public void golpearMaterial(PicoFino picoFino, IMaterialMapa material ) {
+    }
 
     @Override
     public void serGolpeado(Hacha hacha, Madera madera, Desgaste desgaste) {
-        desgaste.usar();
+        try {
+            desgaste.usar();
+        }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
     }
 
     @Override
     public void serGolpeado(Hacha hacha, Piedra piedra, Desgaste desgaste){
-        desgaste.usar();
+        try {
+            desgaste.usar();
+        }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
     }
 
     @Override
     public void serGolpeado(Hacha hacha, Metal metal, Desgaste desgaste){
-        desgaste.usar();
+        try {
+            desgaste.usar();
+        } catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
     }
 
     @Override
     public void serGolpeado(Pico pico, Madera madera, Desgaste desgaste){
-        desgaste.usar();
+        try {
+            desgaste.usar();
+        }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
     }
 
     @Override
     public void serGolpeado(Pico pico, Piedra piedra, Desgaste desgaste){
-        desgaste.usar();
+        try {
+            desgaste.usar();
+        }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
     }
+
 
     @Override
     public void serGolpeado(Pico pico, Metal metal, Desgaste desgaste){
-        desgaste.usar();
+        try {
+            desgaste.usar();
+        }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
+    }
+
+    @Override
+    public  void serGolpeado (PicoFino picoFino, MetalYPiedra materialPicoFino, Desgaste desgaste){
+        try{
+            desgaste.usar();
+        }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
+        desgaste.debiliatarMaterial(this);
+
     }
 }

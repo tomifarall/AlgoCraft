@@ -4,20 +4,20 @@ public class DesgastePorcentual extends Desgaste {
 
     private float porcentajeDesgaste;
 
-    public DesgastePorcentual(int durabilidad, float porcentajeDesgaste) {
+    public DesgastePorcentual(int durabilidad, int fuerza, float porcentajeDesgaste) {
         if(durabilidad <= 0) throw new NoSePuedeUsarSinDurabilidadException();
-        if (porcentajeDesgaste  <= 0 || porcentajeDesgaste > 100) throw new NoSePuedeUsarSinPorcentajeDesgasteException();
+        if (porcentajeDesgaste  <= 0 || porcentajeDesgaste > 1) throw new NoSePuedeUsarSinPorcentajeDesgasteException();
         this.durabilidad = durabilidad;
+        this.fuerza = fuerza;
         this.porcentajeDesgaste = porcentajeDesgaste;
     }
 
     @Override
     public void usar() {
-        durabilidad -= (int) durabilidad * porcentajeDesgaste;
+        if (this.durabilidad <= 0){
+            throw  new NoSePuedeUsarSinDurabilidadException();
+        }
+        this.durabilidad -=  this.durabilidad * porcentajeDesgaste;
     }
 
-    @Override
-    public void usar(int fuerza) {
-        durabilidad -= (int) durabilidad * porcentajeDesgaste;
-    }
 }

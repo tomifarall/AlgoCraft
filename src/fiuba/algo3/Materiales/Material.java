@@ -1,41 +1,59 @@
 package fiuba.algo3.Materiales;
+import fiuba.algo3.Interfaces.IColeccionable;
+import fiuba.algo3.Interfaces.IMapeable;
+import fiuba.algo3.Interfaces.IMaterialHerramienta;
+import fiuba.algo3.Interfaces.IMaterialMapa;
+import fiuba.algo3.Mapa.Posicion;
 
-import fiuba.algo3.Desgastes.Desgaste;
-import fiuba.algo3.Herramientas.Herramienta;
-import fiuba.algo3.Herramientas.Hacha;
-import fiuba.algo3.Herramientas.Pico;
-import fiuba.algo3.Herramientas.PicoFino;
+public abstract class Material implements IMapeable, IMaterialHerramienta, IMaterialMapa, IColeccionable {
 
-public abstract class Material {
+    protected int durabilidad;
 
-    protected Desgaste desgaste;
+    protected int durabilidadInicial;
 
-    public Material() {
-        this.inicializarDesgaste();
+    protected Posicion posicion;
+
+    public int getDurabilidad() { return this.durabilidad;}
+
+    protected int getDurabilidadInicial(){
+        return durabilidadInicial;
     }
 
-    protected abstract void inicializarDesgaste();
+    @Override
+    public void setPosicion(Posicion posicion){
+        this.posicion= posicion;
+    }
 
-    public int getDurabilidad() { return desgaste.getDurabilidad();}
-
-    public abstract void golpear(Hacha hacha, Material material, Desgaste desgaste);
-
-    public abstract void golpear(Pico pico, Material material, Desgaste desgaste);
-
-    /*public abstract void golpear(PicoFino picoFino, Material material, Desgaste desgaste);*/
-
-    public abstract void serGolpeado(Hacha hacha, Madera madera, Desgaste desgaste);
-
-    public abstract void serGolpeado(Hacha hacha, Piedra piedra, Desgaste desgaste);
-
-    public abstract void serGolpeado(Hacha hacha, Metal metal, Desgaste desgaste);
-
-    public abstract void serGolpeado(Pico pico, Madera madera, Desgaste desgaste);
-
-    public abstract void serGolpeado(Pico pico, Piedra piedra, Desgaste desgaste);
-
-    public abstract void serGolpeado(Pico pico, Metal metal, Desgaste desgaste);
+    @Override
+    public Posicion getPosicion(){
+        return  this.posicion;
+    }
 
 
+    public void debilitarse(int fuerza) { this.durabilidad -= fuerza; }
 
+    @Override
+    public void serRecolectado(){
+        if(this.durabilidad > 0){
+            throw new NoSePuedeRecolectarUnMaterialNoDestruidoException();
+        }
+    }
+    @Override
+    public boolean esIgual (IMapeable elemento) {
+
+        if (elemento == this) {
+            return true;
+        }
+        if (elemento.esVacio()){
+            return false;
+        }
+        Material elementoMaterial = (Material) elemento;
+        return ((this.getDurabilidadInicial() == elementoMaterial.getDurabilidadInicial()));
+    }
+
+
+    @Override
+    public  boolean esVacio(){
+        return  false;
+    }
 }

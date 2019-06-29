@@ -2,30 +2,56 @@ package fiuba.algo3.Herramientas;
 
 import fiuba.algo3.Desgastes.DesgasteLineal;
 import fiuba.algo3.Desgastes.DesgastePorUsos;
-import fiuba.algo3.Materiales.Madera;
-import fiuba.algo3.Materiales.Material;
-import fiuba.algo3.Materiales.Metal;
-import fiuba.algo3.Materiales.Piedra;
+import fiuba.algo3.Desgastes.NoSePuedeUsarSinDurabilidadException;
+import fiuba.algo3.Interfaces.IMaterialMapa;
+import fiuba.algo3.Materiales.*;
 
 public class Pico extends Herramienta {
 
 
     public Pico(Madera madera) {
-        material = new Madera();
-        desgaste = new DesgasteLineal(100,2,1);
+        this.material = madera;
+        this.desgaste = new DesgasteLineal(100,2,1);
     }
     public Pico(Piedra piedra) {
-        material = new Piedra();
-        desgaste = new DesgasteLineal(200,4,1/1.5);
+        this.material = piedra;
+        this.desgaste = new DesgasteLineal(200,4,1/1.5f);
     }
     public Pico(Metal metal) {
-        material = new Metal();
-        desgaste = new DesgastePorUsos(400,10, 12);
+        this.material = metal;
+        this.desgaste = new DesgastePorUsos(400,10, 12);
     }
 
     @Override
-    public void golpearMaterial( Material material ){
+    public void golpearMaterial(IMaterialMapa material ){
+        try {
+            this.material.golpearMaterial(this, material);
+        }catch (NoSePuedeUsarSinDurabilidadException e){throw e;}
+    }
 
-        this.material.golpear(this, material, this.desgaste);
+    @Override
+    public void golpearMaterial( IMaterialMapa material , Madera maderaHerramienta){
+        try {
+            material.serGolpeado(this, maderaHerramienta, this.desgaste);
+        }catch (NoSePuedeUsarSinDurabilidadException e){throw e;}
+    }
+    @Override
+    public void golpearMaterial( IMaterialMapa material , Piedra piedraHerramienta){
+        try {
+            material.serGolpeado(this, piedraHerramienta, this.desgaste);
+        }catch (NoSePuedeUsarSinDurabilidadException e){throw e;}
+    }
+    @Override
+    public void golpearMaterial( IMaterialMapa material , Metal metalHerramienta){
+        try {
+            material.serGolpeado(this, metalHerramienta, this.desgaste);
+        }catch (NoSePuedeUsarSinDurabilidadException e){throw e;}
+    }
+    @Override
+    public void golpearMaterial( IMaterialMapa material , Diamante diamante){
+    }
+    @Override
+    public void golpearMaterial(IMaterialMapa material, MetalYPiedra metalYPiedraHerramienta) {
+
     }
 }

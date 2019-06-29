@@ -12,5 +12,8 @@ after_success:
 notifications:
   email:
     recipients:
-      - jbustamante@fi.uba.ar
+      - tom.i7@hotmail.com
+      - moragarcia2007@hotmail.com
+      - juliancassi@hotmail.com
+      - arilow@live.com.ar
     on_failure: always

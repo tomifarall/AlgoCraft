@@ -1,5 +1,10 @@
 package fiuba.algo3.Desgastes;
 
+import fiuba.algo3.Materiales.Diamante;
+import fiuba.algo3.Materiales.Madera;
+import fiuba.algo3.Materiales.Metal;
+import fiuba.algo3.Materiales.Piedra;
+
 public abstract class Desgaste {
 
     protected int durabilidad;
@@ -14,6 +19,19 @@ public abstract class Desgaste {
     }
 
     public abstract void usar();
-    public abstract void usar(int fuerza);
+
+    public void debilitarMaterial(Madera madera){
+        madera.debilitarse(this.fuerza);
+    }
+
+    public void debilitarMaterial(Piedra piedra){
+        piedra.debilitarse(this.fuerza);
+    }
+
+    public void debilitarMaterial(Metal metal){
+        metal.debilitarse(this.fuerza);
+    }
+
+    public void debiliatarMaterial(Diamante diamante) { diamante.debilitarse(this.fuerza);}
 }
 
