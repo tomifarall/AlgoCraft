@@ -13,8 +13,8 @@ public class Metal extends Material {
         this.durabilidadInicial = 50;
         this.durabilidad = this.durabilidadInicial; }
 
-     @Override
-     public void golpearMaterial(Hacha hacha, IMaterialMapa material) {
+    @Override
+    public void golpearMaterial(Hacha hacha, IMaterialMapa material) {
         try {
             hacha.golpearMaterial(material, this);
         }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}

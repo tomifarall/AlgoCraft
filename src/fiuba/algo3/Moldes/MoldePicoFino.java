@@ -32,7 +32,7 @@ public class MoldePicoFino extends Molde {
             }
 
         }
-        Posicion posicionEspecialPicoFino = new Posicion(1,1 );
+        Posicion posicionEspecialPicoFino = new Posicion(1,0 );
         Casillero casilleroEspecialPicoFino = receta.get(posicionEspecialPicoFino);
         casilleroEspecialPicoFino.ocuparCon(new Piedra());
     }

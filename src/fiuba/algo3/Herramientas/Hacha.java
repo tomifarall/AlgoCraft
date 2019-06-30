@@ -5,8 +5,6 @@ import fiuba.algo3.Interfaces.IMaterialMapa;
 import fiuba.algo3.Materiales.*;
 
 public class Hacha extends Herramienta {
-
-
     public Hacha(Madera madera) {
         this.material = madera;
         this.desgaste = new DesgasteLineal(100,2,1);
@@ -54,5 +52,6 @@ public class Hacha extends Herramienta {
     public void golpearMaterial(IMaterialMapa material, MetalYPiedra metalYPiedraHerramienta) {
 
     }
+
 
 }

@@ -51,7 +51,7 @@ public class InventarioTest {
     }
 
     @Test(expected = InventarioLlenoException.class)
-    public void test05NoDeberiaPoderAgregarseMasDe10ElementosAlInventario() {
+    public void test05NoDeberiaPoderAgregarseMasDe15ElementosAlInventario() {
         Inventario inventario = new Inventario();
         IColeccionable material = new Madera();
         IColeccionable material2 = new Metal();
@@ -64,6 +64,11 @@ public class InventarioTest {
         IColeccionable material9 = new Madera();
         IColeccionable material10= new Piedra();
         IColeccionable material11= new Metal();
+        IColeccionable material12= new Metal();
+        IColeccionable material13= new Metal();
+        IColeccionable material14= new Metal();
+        IColeccionable material15= new Metal();
+        IColeccionable material16= new Madera();
 
         inventario.agregar(material);
         inventario.agregar(material2);
@@ -75,9 +80,14 @@ public class InventarioTest {
         inventario.agregar(material8);
         inventario.agregar(material9);
         inventario.agregar(material10);
+        inventario.agregar(material11);
+        inventario.agregar(material12);
+        inventario.agregar(material13);
+        inventario.agregar(material14);
+        inventario.agregar(material15);
 
         //Esta Deberia Romper
-        inventario.agregar(material11);
+        inventario.agregar(material16);
     }
 
     @Test

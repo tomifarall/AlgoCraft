@@ -1,16 +1,16 @@
 package fiuba.algo3.Mapa;
+
 import com.opencsv.CSVReader;
 import fiuba.algo3.Direccion.*;
 import fiuba.algo3.Interfaces.IMapeable;
+import fiuba.algo3.Jugador.Jugador;
 import fiuba.algo3.Materiales.*;
-import javafx.geometry.Pos;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 public class Mapa {
 
@@ -23,6 +23,7 @@ public class Mapa {
     private Mapa(){
         this.tablero = new HashMap<>();
         generarMapa(this.tablero);
+
     }
 
     public static Mapa getMapa(){
@@ -107,12 +108,19 @@ public class Mapa {
         return  posJugador;
     }
 
-    public void setPosicionJugadorCreado(Posicion posicion){
-        Casillero casilleroJugador = this.tablero.get(posJugador);
-        if (casilleroJugador != null) {
-            casilleroJugador.removeOcupante();
+    //Metodo Necesario para que pasen las pruebas debido a la instancia Singleton
+    public void setPosicionJugadorCreado(Posicion posicion,Jugador jugador){
+        if (posJugador == null){
+            posJugador = posicion;
+            Casillero casilleroJugador = tablero.get(posJugador);
+            casilleroJugador.ocuparCon(jugador);
+            return;
         }
+        Casillero casilleroJugador = tablero.get(posJugador);
+        casilleroJugador.removeOcupante();
         this.posJugador = posicion;
+        Casillero nuevoCasilleroJugador = tablero.get(posJugador);
+        nuevoCasilleroJugador.ocuparCon(jugador);
     }
 
     public IMapeable eliminarElemento(Posicion posicion){

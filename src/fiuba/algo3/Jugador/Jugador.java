@@ -47,7 +47,7 @@ public class Jugador implements IMapeable {
 
     @Override
     public void setPosicion(Posicion posicion) {
-        this.mapa.setPosicionJugadorCreado(posicion);
+        this.mapa.setPosicionJugadorCreado(posicion,this);
 
     }
 

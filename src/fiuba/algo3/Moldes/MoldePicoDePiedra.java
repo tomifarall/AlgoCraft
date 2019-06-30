@@ -1,6 +1,6 @@
 package fiuba.algo3.Moldes;
 
-import com.sun.deploy.panel.CacheSettingsDialog;
+
 import fiuba.algo3.Herramientas.Herramienta;
 import fiuba.algo3.Herramientas.Pico;
 import fiuba.algo3.Mapa.Casillero;

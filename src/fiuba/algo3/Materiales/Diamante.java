@@ -1,7 +1,6 @@
 package fiuba.algo3.Materiales;
 
 import fiuba.algo3.Desgastes.Desgaste;
-import fiuba.algo3.Desgastes.DesgasteLineal;
 import fiuba.algo3.Desgastes.NoSePuedeUsarSinDurabilidadException;
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;

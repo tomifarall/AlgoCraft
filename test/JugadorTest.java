@@ -14,10 +14,9 @@ public class JugadorTest {
     public void Test01JugadorSeInicializaCorrectamente(){
         Mapa mapa = Mapa.getMapa();
         Jugador jugador = new Jugador(mapa);
-        Material madera = new Madera();
-        jugador.golpearMaterial(madera,madera.getPosicion());
 
-        Assert.assertEquals(8,madera.getDurabilidad());
+
+        Assert.assertNotEquals(jugador,null);
     }
 
 }

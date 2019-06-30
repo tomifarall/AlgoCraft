@@ -20,6 +20,7 @@ public abstract class Desgaste {
 
     public abstract void usar();
 
+
     public void debilitarMaterial(Madera madera){
         madera.debilitarse(this.fuerza);
     }
@@ -33,5 +34,6 @@ public abstract class Desgaste {
     }
 
     public void debiliatarMaterial(Diamante diamante) { diamante.debilitarse(this.fuerza);}
+
 }
 

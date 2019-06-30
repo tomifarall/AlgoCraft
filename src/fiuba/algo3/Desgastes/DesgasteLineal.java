@@ -7,7 +7,6 @@ public class DesgasteLineal extends Desgaste {
         if (durabilidadInicial <= 0) throw new NoSePuedeUsarSinDurabilidadException();
         if (fuerza  <= 0) throw new FuerzaInvalidaException();
         if (multiplicador  <= 0 || multiplicador > 1) throw new MultiplicadorDeFuerzaInvalidoException();
-
         this.durabilidad = durabilidadInicial;
         this.fuerza = fuerza;
         this.multiplicador = multiplicador ;

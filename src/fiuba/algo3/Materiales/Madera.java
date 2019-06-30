@@ -1,7 +1,6 @@
 package fiuba.algo3.Materiales;
 
 import fiuba.algo3.Desgastes.Desgaste;
-import fiuba.algo3.Desgastes.DesgasteLineal;
 import fiuba.algo3.Desgastes.NoSePuedeUsarSinDurabilidadException;
 import fiuba.algo3.Herramientas.Hacha;
 import fiuba.algo3.Herramientas.Pico;
@@ -70,9 +69,9 @@ public class Madera extends Material {
 
     @Override
     public void serGolpeado(Pico pico, Piedra piedra, Desgaste desgaste){
-       try {
-           desgaste.usar();
-       }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
+        try {
+            desgaste.usar();
+        }catch(NoSePuedeUsarSinDurabilidadException e){throw e;}
         desgaste.debilitarMaterial(this);
     }
 
