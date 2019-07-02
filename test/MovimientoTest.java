@@ -1,6 +1,6 @@
-import fiuba.algo3.Direccion.*;
-import fiuba.algo3.Jugador.Jugador;
-import fiuba.algo3.Mapa.*;
+import modelo.Direccion.*;
+import modelo.Jugador.Jugador;
+import modelo.Mapa.*;
 import org.junit.Test;
 
 
@@ -95,7 +95,7 @@ public class MovimientoTest {
     }
 
 
-    @Test()
+    @Test
     public void test07JugadorTrataDeCruzarElBordeIzquierdoDelMapaYNoCambiaSuPosicion() {
         Mapa mapa = Mapa.getMapa();
         Jugador jugador = new Jugador(mapa);
@@ -107,12 +107,14 @@ public class MovimientoTest {
             jugador.movete(izquierda);
         }
         jugador.movete(abajo);
-        for (int i = 0; i < 19; i++) {
+        for (int i = 0; i < 14; i++) {
             jugador.movete(izquierda);
         }
 
+        try {
+            jugador.movete(izquierda);
+        } catch ( PosicionInvalidaException e ){}
 
-        jugador.movete(izquierda);
         assert posicion.equals(jugador.getPosicion());
     }
 
@@ -127,11 +129,13 @@ public class MovimientoTest {
         jugador.movete(arriba);
         jugador.movete(arriba);
         jugador.movete(arriba);
-        for (int i = 0; i < 28; i++) {
+        for (int i = 0; i < 25; i++) {
             jugador.movete(derecha);
         }
 
-        jugador.movete(derecha);
+        try{
+            jugador.movete(derecha);
+        }catch ( PosicionInvalidaException e){}
 
         assert posicion.equals(jugador.getPosicion());
     }
@@ -143,11 +147,13 @@ public class MovimientoTest {
         Posicion posicion = new Posicion(50, 25);
         Direccion abajo = new DireccionAbajo();
 
-        for (int i = 0; i < 27; i++) {
+        for (int i = 0; i < 25; i++) {
             jugador.movete(abajo);
         }
 
-        jugador.movete(abajo);
+        try{
+            jugador.movete(abajo);
+        }catch ( PosicionInvalidaException e){}
 
         assert posicion.equals(jugador.getPosicion());
     }
@@ -159,11 +165,13 @@ public class MovimientoTest {
         Posicion posicion = new Posicion(0, 25);
         Direccion arriba = new DireccionArriba();
 
-        for (int i = 0; i < 28; i++) {
+        for (int i = 0; i < 25; i++) {
             jugador.movete(arriba);
         }
 
-        jugador.movete(arriba);
+        try{
+            jugador.movete(arriba);
+        }catch ( PosicionInvalidaException e){}
 
         assert posicion.equals(jugador.getPosicion());
     }
@@ -182,9 +190,13 @@ public class MovimientoTest {
             jugador.movete(izquierda);
         }
         jugador.movete(abajo);
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 14; i++) {
             jugador.movete(izquierda);
         }
+
+        try{
+            jugador.movete(izquierda);
+        }catch ( PosicionInvalidaException e){}
 
         jugador.movete(arriba);
         jugador.movete(abajo);
@@ -207,9 +219,14 @@ public class MovimientoTest {
         jugador.movete(arriba);
         jugador.movete(arriba);
         jugador.movete(arriba);
-        for (int i = 0; i < 29; i++) {
+        for (int i = 0; i < 25; i++) {
             jugador.movete(derecha);
         }
+
+        try{
+            jugador.movete(derecha);
+        }catch ( PosicionInvalidaException e){}
+
         jugador.movete(arriba);
         jugador.movete(abajo);
         jugador.movete(abajo);
@@ -228,9 +245,13 @@ public class MovimientoTest {
         Direccion derecha = new DireccionDerecha();
         Direccion arriba = new DireccionArriba();
 
-        for (int i = 0; i < 27; i++) {
+        for (int i = 0; i < 25; i++) {
             jugador.movete(abajo);
         }
+
+        try{
+            jugador.movete(abajo);
+        }catch ( PosicionInvalidaException e){}
 
         jugador.movete(izquierda);
         jugador.movete(izquierda);
@@ -250,9 +271,14 @@ public class MovimientoTest {
         Direccion izquierda = new DireccionIzquierda();
         Direccion abajo = new DireccionAbajo();
 
-        for (int i = 0; i < 33; i++) {
+        for (int i = 0; i < 25; i++) {
             jugador.movete(arriba);
         }
+
+        try{
+            jugador.movete(arriba);
+        }catch ( PosicionInvalidaException e){}
+
         jugador.movete(izquierda);
         jugador.movete(derecha);
         jugador.movete(derecha);
@@ -302,8 +328,12 @@ public class MovimientoTest {
         jugador.movete(izquierda);
         jugador.movete(izquierda);
         jugador.movete(izquierda);
-        jugador.movete(izquierda);
-        jugador.movete(izquierda);
+        try{
+            jugador.movete(izquierda);
+        }catch ( CasilleroOcupadoException e){}
+        try{
+            jugador.movete(izquierda);
+        }catch ( CasilleroOcupadoException e){}
 
         assert posicion.equals(jugador.getPosicion());
     }
@@ -322,8 +352,16 @@ public class MovimientoTest {
         jugador.movete(izquierda);
         jugador.movete(izquierda);
         jugador.movete(izquierda);
-        jugador.movete(izquierda);
-        jugador.movete(izquierda);
+        //TRATA DE CRUZAR MAS DE UNA VEZ
+        try {
+            jugador.movete(izquierda);
+        }catch (CasilleroOcupadoException e){}
+
+        try {
+            jugador.movete(izquierda);
+        }catch (CasilleroOcupadoException e){}
+        //
+
         jugador.movete(derecha);
 
         assert posicion.equals(jugador.getPosicion());
@@ -343,8 +381,14 @@ public class MovimientoTest {
         jugador.movete(izquierda);
         jugador.movete(izquierda);
         jugador.movete(izquierda);
-        jugador.movete(izquierda);
-        jugador.movete(izquierda);
+
+        try {
+            jugador.movete(izquierda);
+        }catch (CasilleroOcupadoException e ){}
+        try {
+            jugador.movete(izquierda);
+        }catch (CasilleroOcupadoException e){}
+        //
         jugador.movete(arriba);
         jugador.movete(abajo);
         jugador.movete(abajo);

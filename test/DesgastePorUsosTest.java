@@ -1,29 +1,29 @@
-import fiuba.algo3.Desgastes.DesgastePorUsos;
-import fiuba.algo3.Desgastes.NoSePuedeUsarSinDurabilidadException;
-import fiuba.algo3.Desgastes.NoSePuedeUsarSinUsosException;
+import modelo.Desgastes.*;
 
+import modelo.Materiales.Diamante;
+import modelo.Materiales.Madera;
+import modelo.Materiales.Metal;
+import modelo.Materiales.Piedra;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class DesgastePorUsosTest {
-    @Test
+    @Test (expected = DurabilidadInvalidaException.class)
     public void Test01DesgastePorUsosDaErrorConDurabilidad0(){
         int durabilidad = 0;
         int usos = 2;
         int fuerza = 5;
-        try{
-            DesgastePorUsos desgaste = new DesgastePorUsos(durabilidad, usos, fuerza);
-        } catch(NoSePuedeUsarSinDurabilidadException e){}
+
+        DesgastePorUsos desgaste = new DesgastePorUsos(durabilidad, usos, fuerza);
     }
 
-    @Test
+    @Test (expected = DurabilidadInvalidaException.class)
     public void Test02DesgastePorUsosDaErrorConDurabilidadNegativa(){
         int durabilidad = -1;
         int usos = 2;
         int fuerza = 5;
-        try{
-            DesgastePorUsos desgaste = new DesgastePorUsos(durabilidad,usos, fuerza);
-        } catch(NoSePuedeUsarSinDurabilidadException e){}
+
+        DesgastePorUsos desgaste = new DesgastePorUsos(durabilidad,usos, fuerza);
     }
 
     @Test
@@ -35,24 +35,22 @@ public class DesgastePorUsosTest {
 
         Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
     }
-    @Test
+    @Test (expected = NoSePuedeUsarSinUsosException.class)
     public void Test04DesgastePorUsosDaErrorConUsos0(){
         int durabilidad = 2;
         int usos = 0;
         int fuerza = 5;
-        try{
-            DesgastePorUsos desgaste = new DesgastePorUsos(durabilidad, usos, fuerza);
-        } catch(NoSePuedeUsarSinUsosException e){}
+
+        DesgastePorUsos desgaste = new DesgastePorUsos(durabilidad, usos, fuerza);
     }
 
-    @Test
+    @Test (expected = NoSePuedeUsarSinUsosException.class)
     public void Test05DesgastePorUsosDaErrorConUsosNegativos(){
         int durabilidad = 2;
         int usos = -1;
         int fuerza = 5;
-        try{
-            DesgastePorUsos desgaste = new DesgastePorUsos(durabilidad, usos, fuerza);
-        } catch(NoSePuedeUsarSinUsosException e){}
+
+        DesgastePorUsos desgaste = new DesgastePorUsos(durabilidad, usos, fuerza);
     }
 
     @Test
@@ -74,7 +72,66 @@ public class DesgastePorUsosTest {
         Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
         desgaste.usar();
         Assert.assertEquals( durabilidad , desgaste.getDurabilidad());
-        desgaste.usar();
+        try {
+            desgaste.usar();
+        }catch (HerramientaRotaException e){}
+
         Assert.assertEquals( 0 , desgaste.getDurabilidad());
+    }
+
+    @Test
+    public void Test08DesgastePorUsosDebilitaMadera(){
+        Madera madera = new Madera();
+        DesgastePorUsos desgaste = new DesgastePorUsos(1000,3,2);
+        int fuerza = desgaste.getFuerza();
+        int durabilidad = madera.getDurabilidad();
+
+        desgaste.debilitarMaterial(madera);
+        desgaste.debilitarMaterial(madera);
+        desgaste.debilitarMaterial(madera);
+
+        Assert.assertEquals(durabilidad - 3 * fuerza, madera.getDurabilidad());
+    }
+
+    @Test
+    public void Test09DesgastePorUsosDebilitaPiedra(){
+        Piedra piedra = new Piedra();
+        DesgastePorUsos desgaste = new DesgastePorUsos(1000,3,2);
+        int fuerza = desgaste.getFuerza();
+        int durabilidad = piedra.getDurabilidad();
+
+        desgaste.debilitarMaterial(piedra);
+        desgaste.debilitarMaterial(piedra);
+        desgaste.debilitarMaterial(piedra);
+
+        Assert.assertEquals(durabilidad - 3 * fuerza, piedra.getDurabilidad());
+    }
+
+    @Test
+    public void Test10DesgastePorUsosDebilitaMetal(){
+        Metal metal = new Metal();
+        DesgastePorUsos desgaste = new DesgastePorUsos(1000,3,2);
+        int fuerza = desgaste.getFuerza();
+        int durabilidad = metal.getDurabilidad();
+
+        desgaste.debilitarMaterial(metal);
+        desgaste.debilitarMaterial(metal);
+        desgaste.debilitarMaterial(metal);
+
+        Assert.assertEquals(durabilidad - 3 * fuerza, metal.getDurabilidad());
+    }
+
+    @Test
+    public void Test11DesgastePorUsosDebilitaDiamante(){
+        Diamante diamante = new Diamante();
+        DesgastePorUsos desgaste = new DesgastePorUsos(1000,3,2);
+        int fuerza = desgaste.getFuerza();
+        int durabilidad = diamante.getDurabilidad();
+
+        desgaste.debiliatarMaterial(diamante);
+        desgaste.debiliatarMaterial(diamante);
+        desgaste.debiliatarMaterial(diamante);
+
+        Assert.assertEquals(durabilidad - 3 * fuerza, diamante.getDurabilidad());
     }
 }

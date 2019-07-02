@@ -1,11 +1,12 @@
-import fiuba.algo3.Herramientas.Herramienta;
-import fiuba.algo3.Materiales.Diamante;
-import fiuba.algo3.Materiales.Madera;
-import fiuba.algo3.Materiales.Material;
-import fiuba.algo3.Materiales.Piedra;
-import fiuba.algo3.Moldes.*;
+import modelo.Herramientas.Herramienta;
+import modelo.Materiales.Diamante;
+import modelo.Materiales.Madera;
+import modelo.Materiales.Material;
+import modelo.Materiales.Piedra;
+import modelo.Moldes.*;
 import org.junit.Assert;
 import org.junit.Test;
+
 
 public class MoldeTest {
 
@@ -19,14 +20,13 @@ public class MoldeTest {
         Molde moldePicoMetal = new MoldePicoDeMetal();
         Molde moldePicoFino = new MoldePicoFino();
 
-
-        Assert.assertNotEquals(moldeHachaMadera , null);
-        Assert.assertNotEquals(moldeHachaPiedra , null);
-        Assert.assertNotEquals(moldeHachaMetal , null);
-        Assert.assertNotEquals(moldePicoMadera , null);
-        Assert.assertNotEquals(moldePicoPiedra, null);
-        Assert.assertNotEquals(moldePicoMetal, null);
-        Assert.assertNotEquals(moldePicoFino , null);
+        Assert.assertNotNull(moldeHachaMadera);
+        Assert.assertNotNull(moldeHachaPiedra);
+        Assert.assertNotNull(moldeHachaMetal);
+        Assert.assertNotNull(moldePicoMadera);
+        Assert.assertNotNull(moldePicoPiedra);
+        Assert.assertNotNull(moldePicoMetal);
+        Assert.assertNotNull(moldePicoFino);
     }
 
     @Test

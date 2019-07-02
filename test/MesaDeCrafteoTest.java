@@ -1,12 +1,12 @@
-import fiuba.algo3.Herramientas.Hacha;
-import fiuba.algo3.Herramientas.Herramienta;
-import fiuba.algo3.Herramientas.Pico;
-import fiuba.algo3.Herramientas.PicoFino;
-import fiuba.algo3.Jugador.MesaDeCrafteo;
-import fiuba.algo3.Jugador.PosicionVaciaEnLaMesaDeCrafteoException;
-import fiuba.algo3.Mapa.Posicion;
-import fiuba.algo3.Materiales.*;
-import fiuba.algo3.Moldes.MoldeInvalidoException;
+import modelo.Herramientas.Hacha;
+import modelo.Herramientas.Herramienta;
+import modelo.Herramientas.Pico;
+import modelo.Herramientas.PicoFino;
+import modelo.Jugador.MesaDeCrafteo;
+import modelo.Jugador.PosicionVaciaEnLaMesaDeCrafteoException;
+import modelo.Mapa.Posicion;
+import modelo.Materiales.*;
+import modelo.Moldes.MoldeInvalidoException;
 import org.junit.Assert;
 import org.junit.Test;
 

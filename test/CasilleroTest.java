@@ -1,13 +1,9 @@
-import fiuba.algo3.Interfaces.IMapeable;
-import fiuba.algo3.Mapa.Casillero;
-import fiuba.algo3.Mapa.CoordenadasInvalidasException;
-import fiuba.algo3.Mapa.Posicion;
-import fiuba.algo3.Materiales.Piedra;
-import fiuba.algo3.Materiales.Vacio;
+import modelo.Interfaces.IMapeable;
+import modelo.Mapa.Casillero;
+import modelo.Materiales.Piedra;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.swing.*;
 
 public class CasilleroTest {
 
@@ -16,7 +12,7 @@ public class CasilleroTest {
     public void Test01CasilleroSeDeberiaInicializarCorrectamente(){
         Casillero casillero = new Casillero();
 
-        Assert.assertNotEquals(casillero,null);
+        Assert.assertNotNull(casillero);
     }
 
     @Test

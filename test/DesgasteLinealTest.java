@@ -1,13 +1,14 @@
-import fiuba.algo3.Desgastes.DesgasteLineal;
-import fiuba.algo3.Desgastes.MultiplicadorDeFuerzaInvalidoException;
-import fiuba.algo3.Desgastes.NoSePuedeUsarSinDurabilidadException;
-import fiuba.algo3.Desgastes.FuerzaInvalidaException;
+import modelo.Desgastes.*;
 
+import modelo.Materiales.Diamante;
+import modelo.Materiales.Madera;
+import modelo.Materiales.Metal;
+import modelo.Materiales.Piedra;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class DesgasteLinealTest {
-    @Test (expected = NoSePuedeUsarSinDurabilidadException.class)
+    @Test (expected = DurabilidadInvalidaException.class)
     public void Test01DesgasteLinealDaErrorConDurabilidad0(){
         int durabilidad =0;
         float multiplicador = 0.8f;
@@ -47,7 +48,7 @@ public class DesgasteLinealTest {
         DesgasteLineal desgaste = new DesgasteLineal(durabilidad, fuerza, multiplicador);
     }
 
-    @Test (expected = NoSePuedeUsarSinDurabilidadException.class)
+    @Test (expected = DurabilidadInvalidaException.class)
     public void Test06DesgasteLinealDaErrorConDurabilidadNegativa(){
         int durabilidad = -6;
         float multiplicador = 0.1f;
@@ -93,6 +94,81 @@ public class DesgasteLinealTest {
         Assert.assertEquals( durabilidad-2*(int)(fuerza*multiplicador) , desgaste.getDurabilidad());
         desgaste.usar();
         Assert.assertEquals( durabilidad-3*(int)(fuerza*multiplicador) , desgaste.getDurabilidad());
+    }
+
+    @Test
+    public void Test10DesgasteLinealDebilitaMadera(){
+        Madera madera = new Madera();
+        DesgasteLineal desgaste = new DesgasteLineal(1000,3,0.5f);
+        int fuerza = desgaste.getFuerza();
+        int durabilidad = madera.getDurabilidad();
+
+        desgaste.debilitarMaterial(madera);
+        desgaste.debilitarMaterial(madera);
+        desgaste.debilitarMaterial(madera);
+
+        Assert.assertEquals(durabilidad - 3 * fuerza, madera.getDurabilidad());
+    }
+
+    @Test
+    public void Test11DesgasteLinealDebilitaPiedra(){
+        Piedra piedra = new Piedra();
+        DesgasteLineal desgaste = new DesgasteLineal(1000,3,0.5f);
+        int fuerza = desgaste.getFuerza();
+        int durabilidad = piedra.getDurabilidad();
+
+        desgaste.debilitarMaterial(piedra);
+        desgaste.debilitarMaterial(piedra);
+        desgaste.debilitarMaterial(piedra);
+
+        Assert.assertEquals(durabilidad - 3 * fuerza, piedra.getDurabilidad());
+    }
+
+    @Test
+    public void Test12DesgasteLinealDebilitaMetal(){
+        Metal metal = new Metal();
+        DesgasteLineal desgaste = new DesgasteLineal(1000,3,0.5f);
+        int fuerza = desgaste.getFuerza();
+        int durabilidad = metal.getDurabilidad();
+
+        desgaste.debilitarMaterial(metal);
+        desgaste.debilitarMaterial(metal);
+        desgaste.debilitarMaterial(metal);
+
+        Assert.assertEquals(durabilidad - 3 * fuerza, metal.getDurabilidad());
+    }
+
+    @Test
+    public void Test13DesgasteLinealDebilitaDiamante(){
+        Diamante diamante = new Diamante();
+        DesgasteLineal desgaste = new DesgasteLineal(1000,3,0.5f);
+        int fuerza = desgaste.getFuerza();
+        int durabilidad = diamante.getDurabilidad();
+
+        desgaste.debiliatarMaterial(diamante);
+        desgaste.debiliatarMaterial(diamante);
+        desgaste.debiliatarMaterial(diamante);
+
+        Assert.assertEquals(durabilidad - 3 * fuerza, diamante.getDurabilidad());
+    }
+
+    @Test (expected = HerramientaRotaException.class)
+    public void Test14DesgasteLinealNoSePuedeUsarSinDurabilidad(){
+        int multiplicador = 1;
+        DesgasteLineal desgaste = new DesgasteLineal(10,1,1);
+        int durabilidad = desgaste.getDurabilidad();
+        int fuerza = desgaste.getFuerza();
+        int cantidadDeUsos = durabilidad / ((int) (fuerza*multiplicador)) -1;
+
+        for (int i = 0; i < cantidadDeUsos; i++) {
+            try {
+                desgaste.usar();
+            }catch (HerramientaRotaException e){
+                throw new FuerzaInvalidaException();
+            }
+        }
+
+        desgaste.usar();
     }
 
 }

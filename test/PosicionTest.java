@@ -1,6 +1,6 @@
-import fiuba.algo3.Direccion.*;
+import modelo.Direccion.*;
 import org.junit.Test;
-import fiuba.algo3.Mapa.Posicion;
+import modelo.Mapa.Posicion;
 
 public class PosicionTest {
 
@@ -64,7 +64,7 @@ public class PosicionTest {
         assert posicion.equals(posicionSiguiente);
     }
     @Test
-    public void test06SeVerificaQueElcalculoDeLasPosicionesSiguienteEsCorrecto(){
+    public void test06SeVerificaQueElcalculoDeLasPosicionesSiguientesEsCorrecto(){
         Posicion posicion = new Posicion( 50,50);
         Posicion posicionFinal = new Posicion(50,50);
         Direccion direccionArriba = new DireccionArriba();
@@ -84,7 +84,7 @@ public class PosicionTest {
         assert posicion.equals(posicionFinal);
     }
     @Test
-    public void test07(){
+    public void test07SeVerificaQueElcalculoDeLasPosicionesSiguientesEsCorrecto2(){
         Posicion posicion = new Posicion( 50,50);
         Posicion posicionFinal = new Posicion(51,49);
         Direccion direccionArriba = new DireccionArriba();

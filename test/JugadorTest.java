@@ -1,8 +1,8 @@
-import fiuba.algo3.Interfaces.IMaterialMapa;
-import fiuba.algo3.Jugador.Jugador;
-import fiuba.algo3.Mapa.Mapa;
-import fiuba.algo3.Mapa.Posicion;
-import fiuba.algo3.Materiales.*;
+import modelo.Interfaces.IMaterialMapa;
+import modelo.Jugador.Jugador;
+import modelo.Mapa.Mapa;
+import modelo.Mapa.Posicion;
+import modelo.Materiales.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,8 +15,7 @@ public class JugadorTest {
         Mapa mapa = Mapa.getMapa();
         Jugador jugador = new Jugador(mapa);
 
-
-        Assert.assertNotEquals(jugador,null);
+        Assert.assertNotNull(jugador);
     }
 
 }
