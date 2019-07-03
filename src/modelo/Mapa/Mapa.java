@@ -14,14 +14,9 @@ import java.util.HashMap;
 public class Mapa {
 
     private static Mapa actual;
-    private Posicion posJugador;
+    private Posicion posicionJugador;
     String archivo = "Mapa.txt";
     private HashMap<Posicion, Casillero> tablero;
-
-
-    public HashMap<Posicion,Casillero> getTableroMapa(){
-        return tablero;
-    }
 
     private Mapa(){
         this.tablero = new HashMap<>();
@@ -35,24 +30,7 @@ public class Mapa {
         return actual;
     }
 
-    public void actualizarPosicion(IMapeable elemento, Direccion direccion) {
-        Posicion nuevaPosicion = posJugador.obtenerPosicionSiguiente(direccion);
-        if (!this.tablero.containsKey(nuevaPosicion)) {
-            throw new PosicionInvalidaException();
-        }
-        Casillero nuevoCasillero = this.tablero.get(nuevaPosicion);
-        Casillero casilleroJugador = this.tablero.get(posJugador);
-        casilleroJugador.removeOcupante();
-        try {
-            nuevoCasillero.ocuparCon(elemento);
-        } catch (CasilleroOcupadoException e) {
-            casilleroJugador.ocuparCon(elemento);
-            throw e;      //NUEVO PARA VER SI FUNCIONA MEJOR
-        }
-        posJugador = nuevaPosicion;
-    }
-
-
+    /////////////////////CREACION MAPA /////////////////////////////////
     private void generarMapa(HashMap tablero){
         for (int largo=0; largo<51 ; largo++) {
             for (int ancho = 0; ancho < 51; ancho++) {
@@ -107,25 +85,46 @@ public class Mapa {
         }
 
     }
+    //////////////////////////////////////////////////////////
 
     public Posicion getPosicionJugador(){
-        return  posJugador;
+        return posicionJugador;
     }
 
     public void setPosicionJugadorCreado(Posicion posicion,Jugador jugador){
-            if (posJugador == null){
-                posJugador = posicion;
-                Casillero casilleroJugador = tablero.get(posJugador);
+            if (posicionJugador == null){
+                posicionJugador = posicion;
+                Casillero casilleroJugador = tablero.get(posicionJugador);
                 casilleroJugador.ocuparCon(jugador);
                 return;
             }
-            Casillero casilleroJugador = tablero.get(posJugador);
+            Casillero casilleroJugador = tablero.get(posicionJugador);
             casilleroJugador.removeOcupante();
-            this.posJugador = posicion;
-            Casillero nuevoCasilleroJugador = tablero.get(posJugador);
+            this.posicionJugador = posicion;
+            Casillero nuevoCasilleroJugador = tablero.get(posicionJugador);
             nuevoCasilleroJugador.ocuparCon(jugador);
     }
 
+    public HashMap<Posicion,Casillero> getTableroMapa(){
+        return tablero;
+    }
+
+    public void actualizarPosicion(IMapeable elemento, Direccion direccion) {
+        Posicion nuevaPosicion = posicionJugador.obtenerPosicionSiguiente(direccion);
+        if (!this.tablero.containsKey(nuevaPosicion)) {
+            throw new PosicionInvalidaException();
+        }
+        Casillero nuevoCasillero = this.tablero.get(nuevaPosicion);
+        Casillero casilleroJugador = this.tablero.get(posicionJugador);
+        casilleroJugador.removeOcupante();
+        try {
+            nuevoCasillero.ocuparCon(elemento);
+        } catch (CasilleroOcupadoException e) {
+            casilleroJugador.ocuparCon(elemento);
+            throw e;
+        }
+        posicionJugador = nuevaPosicion;
+    }
 
     public void eliminarElemento(Posicion posicion){
         Casillero casilleroElemento = this.tablero.get(posicion);
@@ -138,7 +137,7 @@ public class Mapa {
     }
 
     public void verificarAdyacenciaConPos(Posicion posicion) {
-        ArrayList<Posicion> adyacentes = this.obtenerAdyacentes(posJugador);
+        ArrayList<Posicion> adyacentes = this.obtenerAdyacentes(posicionJugador);
         for (Posicion adyacente : adyacentes) {
             if (posicion.equals(adyacente)) return;
         }

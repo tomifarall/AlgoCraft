@@ -37,16 +37,11 @@ public class Juego {
     //GETTERS QUE CAPAZ SE PUEDAN SACAR
     public Jugador getJugador(){ return jugador;}
 
-
-    public void agregarMaterialAMesaDeCrafteo(Material material, Posicion posicion){
-        jugador.ponerMaterialEnMesaDeCrafteo(material,posicion);
-    }
+    public Mapa getMapa(){return mapa;}
 
     public HashMap<Posicion,IColeccionable> getInventarioJugador(){
         return jugador.getInventario();
     }
-
-    public Mapa getMapa(){return mapa;}
 
     public HashMap<Posicion, Casillero> getMapaJuego(){ return mapa.getTableroMapa();}
 
@@ -76,18 +71,16 @@ public class Juego {
         }
     }
 
-    public IMapeable obtenerMaterialEnPosicion(int I, int J){
-        Posicion posicion = new Posicion(I,J);
-       // IMapeable material = mapa.obtenerMaterialEnPosicion(posicion);
-        return null;
-    }
-
     public void eliminarDeInventario(Posicion posicionMaterial) {
         jugador.eliminarElementoDelInventario(posicionMaterial);
     }
 
     public void elegirNuevaHerramientaEnMano(Posicion posicionHerramientaEnInventario){
         jugador.seleccionarNuevaHerramientaEnMano(posicionHerramientaEnInventario);
+    }
+
+    public void agregarMaterialAMesaDeCrafteo(Material material, Posicion posicion){
+        jugador.ponerMaterialEnMesaDeCrafteo(material,posicion);
     }
 
     public void eliminarMaterialDeMesaDeCrafteo(Posicion posicionElementoEnMesaDeCrafteo){

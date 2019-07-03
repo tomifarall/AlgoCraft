@@ -17,7 +17,7 @@ public class Casillero {
     }
 
     public void ocuparCon(IMapeable ocupante) {
-        if (this.ocupante != null && this.ocupante.getTipo()!= "vacio") {
+        if (this.ocupante != null && !this.ocupante.esVacio()) {
             throw new CasilleroOcupadoException();
         } else {
             this.ocupante = ocupante;

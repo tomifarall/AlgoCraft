@@ -1,5 +1,7 @@
 import modelo.Interfaces.IMapeable;
 import modelo.Mapa.Casillero;
+import modelo.Mapa.CasilleroOcupadoException;
+import modelo.Materiales.Madera;
 import modelo.Materiales.Piedra;
 import org.junit.Assert;
 import org.junit.Test;
@@ -42,6 +44,17 @@ public class CasilleroTest {
         IMapeable ocupanteCasillero = casillero.getOcupante();
 
         assert ocupanteCasillero.esVacio();
+
+    }
+
+    @Test (expected = CasilleroOcupadoException.class)
+    public  void  Test05CasilleroNoDeberiaPoderOcuparseCuandoContieneUnOcupanteQueNoEsVacio(){
+        Casillero casillero = new Casillero();
+        IMapeable material = new Madera();
+        IMapeable material2 = new Piedra();
+        casillero.ocuparCon(material);
+
+        casillero.ocuparCon(material2);
 
     }
 }

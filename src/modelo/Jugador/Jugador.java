@@ -30,39 +30,6 @@ public class Jugador implements IMapeable {
         this.setPosicion(new Posicion(25, 25));
     }
 
-    public HashMap<Posicion,Casillero> getMesaDeCrafteo(){
-        return mesaDeCrafteo.getTablero();
-    }
-
-    public void ponerMaterialEnMesaDeCrafteo(Material material, Posicion posicion){
-        mesaDeCrafteo.agregarMaterial(material, posicion);       //EXCEPCION EN CASO DE ESTAR LLENA?????? //probar que pasa con la interfaz grafica
-    }
-
-    @Override
-    public boolean esVacio() {
-        return false;
-    }
-
-    @Override
-    public String getTipo() {
-        return "jugador";  //SACAR DESPUES
-    }
-
-    @Override
-    public boolean esIgual(IMapeable elemento) {
-        return false;
-    }
-
-    public HashMap<Posicion, IColeccionable> getInventario() {
-        return inventario.getInventario();
-    }
-
-
-    //GETTER QUE CAPAAAZZ SE PUEDE SACAR
-    public Herramienta getHerramientaEnMano() {
-        return herramientaEnMano;
-    }
-
 
     private Hacha crearHachaInicial() {
         Madera madera = new Madera();
@@ -79,17 +46,6 @@ public class Jugador implements IMapeable {
         catch (PosicionInvalidaException | CasilleroOcupadoException e){
             throw e;
         }
-    }
-
-    @Override
-    public Posicion getPosicion() {
-        return mapa.getPosicionJugador();
-    }
-
-    @Override
-    public void setPosicion(Posicion posicion) {
-        this.mapa.setPosicionJugadorCreado(posicion,this);
-
     }
 
     public void golpearMaterial(IMaterialMapa material, Posicion posicion){
@@ -122,8 +78,33 @@ public class Jugador implements IMapeable {
         }
     }
 
+    public HashMap<Posicion,Casillero> getMesaDeCrafteo(){
+        return mesaDeCrafteo.getTablero();
+    }
+
+    public void ponerMaterialEnMesaDeCrafteo(Material material, Posicion posicion){
+        mesaDeCrafteo.agregarMaterial(material, posicion);       //EXCEPCION EN CASO DE ESTAR LLENA?????? //probar que pasa con la interfaz grafica
+    }
+
+    public void eliminarMaterialEnMesaDeCrafteo(Posicion posicionMaterialEnMesaDeCrafteo){
+        Material materialEliminadoDeMesaDeCrafteo = mesaDeCrafteo.eliminarMaterial(posicionMaterialEnMesaDeCrafteo);
+        try {
+            inventario.agregar(materialEliminadoDeMesaDeCrafteo);
+        }catch (InventarioLlenoException e){
+            throw e;
+        }
+    }
+
+    public void agregarElementoAlInventario(IColeccionable elemento){
+        inventario.agregar(elemento);
+    }
+
     public void eliminarElementoDelInventario(Posicion posicionMaterial) {
         inventario.eliminar(posicionMaterial);
+    }
+
+    public HashMap<Posicion, IColeccionable> getInventario() {
+        return inventario.getInventario();
     }
 
     public void seleccionarNuevaHerramientaEnMano(Posicion posicionHerramientaEnInventario){
@@ -133,13 +114,9 @@ public class Jugador implements IMapeable {
     public void eliminarHerramientaEnManoActual(){
         this.herramientaEnMano = null;
     }
-    public void eliminarMaterialEnMesaDeCrafteo(Posicion posicionMaterialEnMesaDeCrafteo){
-        Material materialEliminadoDeMesaDeCrafteo = mesaDeCrafteo.eliminarMaterial(posicionMaterialEnMesaDeCrafteo);
-        try {
-            inventario.agregar(materialEliminadoDeMesaDeCrafteo);
-        }catch (InventarioLlenoException e){
-            throw e;
-        }
+
+    public Herramienta getHerramientaEnMano() {
+        return herramientaEnMano;
     }
 
     public Herramienta crearHerramienta(){
@@ -152,7 +129,30 @@ public class Jugador implements IMapeable {
         }
     }
 
-    public void agregarElementoAlInventario(IColeccionable elemento){
-        inventario.agregar(elemento);
+    @Override
+    public Posicion getPosicion() {
+        return mapa.getPosicionJugador();
     }
+
+    @Override
+    public void setPosicion(Posicion posicion) {
+        this.mapa.setPosicionJugadorCreado(posicion,this);
+    }
+
+    @Override
+    public boolean esVacio() {
+        return false;
+    }
+
+    @Override
+    public String getTipo() {
+        return "jugador";  //SACAR DESPUES
+    }
+
+    @Override
+    public boolean esIgual(IMapeable elemento) {
+        return false;
+    }
+
 }
+

@@ -13,6 +13,10 @@
         <dependency org="net.sourceforge.cobertura" name="cobertura" rev="2.1.1" conf="build->default"/>
         
         <dependency org="pmd" name="pmd" rev="4.3" conf="analysis->default"/>
+
+        <dependency org="com.opencsv" name="opencsv" rev="4.6">
+            <artifact name="opencsv" type="jar" />
+        </dependency>
         
         
         <!--

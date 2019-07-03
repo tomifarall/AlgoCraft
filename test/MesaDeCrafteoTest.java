@@ -2,25 +2,67 @@ import modelo.Herramientas.Hacha;
 import modelo.Herramientas.Herramienta;
 import modelo.Herramientas.Pico;
 import modelo.Herramientas.PicoFino;
+import modelo.Interfaces.IMaterialMapa;
 import modelo.Jugador.MesaDeCrafteo;
 import modelo.Jugador.PosicionVaciaEnLaMesaDeCrafteoException;
+import modelo.Mapa.Casillero;
 import modelo.Mapa.Posicion;
 import modelo.Materiales.*;
 import modelo.Moldes.MoldeInvalidoException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 public class MesaDeCrafteoTest {
 
-    //CREARLA
-    //AGREGAR A TODAS LAS POSICIONES
-    //AGREGAR A VARIAS POSICIONES
-    //ELIMINAR DE TODAS LAS POSICONES
-    //QUE NO SE PUEDA ELIMINAR DE UNO QUE NO TIENE NADA
-    //COMPARAR CONTRA TODOS LOS MOLDES  (CRAFTEAR)
+    @Test
+    public void test01MesaDeCrafteoSeCreaCorrectamente(){
+        MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
+
+        Assert.assertNotNull(mesaDeCrafteo);
+    }
+
+    @Test (expected = MoldeInvalidoException.class)
+    public void test02MesaDeCrafteoVaciaAlSerCrafteadaLanzaError(){
+        MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
+
+        mesaDeCrafteo.craftear();
+    }
 
     @Test
-    public  void test01Hachademadera(){
+    public void test02EsPosibleAgregarUnMaterialALaMesaDeCrafteo(){
+        MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
+        Material madera = new Madera();
+        Posicion posicion = new Posicion(0,0);
+        HashMap<Posicion, Casillero> tablero = mesaDeCrafteo.getTablero();
+
+        mesaDeCrafteo.agregarMaterial(madera , posicion);
+
+        Casillero casilleroOcupado = tablero.get( posicion);
+
+        Assert.assertEquals(casilleroOcupado.getOcupante(),madera);
+
+    }
+
+    @Test
+    public  void test03EsPosibleEliminarUnMaterialDeLaMesaDeCrafteo(){
+        MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
+        Material madera = new Madera();
+        HashMap<Posicion, Casillero> tablero = mesaDeCrafteo.getTablero();
+        Posicion posicion =new Posicion(0,0);
+        mesaDeCrafteo.agregarMaterial(madera , posicion);
+
+
+
+        Assert.assertEquals(mesaDeCrafteo.eliminarMaterial(posicion) ,madera);
+
+
+
+    }
+
+    @Test
+    public  void test04MesaDeCrafteoCreaHachademadera(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
         Material madera1 = new Madera();
         Material madera2 = new Madera();
@@ -48,7 +90,7 @@ public class MesaDeCrafteoTest {
     }
 
     @Test
-    public  void test02Hachadepiedra(){
+    public  void test05MesaDeCrafteoCreaHachadepiedra(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
         Material madera1 = new Madera();
         Material madera2 = new Madera();
@@ -76,7 +118,7 @@ public class MesaDeCrafteoTest {
     }
 
     @Test
-    public  void test03Hachademetal(){
+    public  void test06MesaDeCrafteoCreaHachademetal(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
         Material madera1 = new Madera();
         Material madera2 = new Madera();
@@ -104,7 +146,7 @@ public class MesaDeCrafteoTest {
     }
 
     @Test
-    public  void test05Picodemadera(){
+    public  void test07MesaDeCrafteoCreaPicodemadera(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
         Material madera1 = new Madera();
         Material madera2 = new Madera();
@@ -133,7 +175,7 @@ public class MesaDeCrafteoTest {
 
 
     @Test
-    public  void test04Picodepiedra(){
+    public  void test08MesaDeCrafteoCreaPicodepiedra(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
         Material madera1 = new Madera();
         Material madera2 = new Madera();
@@ -163,7 +205,7 @@ public class MesaDeCrafteoTest {
 
 
     @Test
-    public  void test06Picodemetal(){
+    public  void test09MesaDeCrafteoCreaPicodemetal(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
         Material madera1 = new Madera();
         Material madera2 = new Madera();
@@ -191,7 +233,7 @@ public class MesaDeCrafteoTest {
     }
 
     @Test
-    public  void test07Picofino(){
+    public  void test10MesaDeCrafteoCreaPicofino(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
         Material madera1 = new Madera();
         Material madera2 = new Madera();
@@ -221,7 +263,7 @@ public class MesaDeCrafteoTest {
     }
 
     @Test (expected = MoldeInvalidoException.class)
-    public void test08todasLasPosicionesAunqueSeaMoldeInvalido(){
+    public void test11MesaDeCrafteoDeberiaFallarSiSeLlenantodasLasPosicionesYSeIntentaCraftear(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
 
         Material madera1 = new Madera();
@@ -239,7 +281,7 @@ public class MesaDeCrafteoTest {
     }
 
     @Test(expected = PosicionVaciaEnLaMesaDeCrafteoException.class)
-    public void test09nosepuedeeliminarmaterialdeposicionvacia(){
+    public void test12NoSeDeberiaPoderEliminarDeUnaPosicionVaciaa(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
 
         Material madera1 = new Madera();
@@ -268,7 +310,7 @@ public class MesaDeCrafteoTest {
     }
 
     @Test(expected = MoldeInvalidoException.class)
-    public void test10LlenoYEliminoTodasLasPosiciones(){
+    public void test13LlenoYEliminoTodasLasPosiciones(){
         MesaDeCrafteo mesaDeCrafteo = new MesaDeCrafteo();
 
         Material madera1 = new Madera();

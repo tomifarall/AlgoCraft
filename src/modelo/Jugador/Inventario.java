@@ -28,10 +28,10 @@ public class Inventario {
     }
 
     public void agregar(IColeccionable elemento){
-        if (this.cantidadDeElementosAlmacenados >= this.cantidadDeEspacios){
+        if (this.cantidadDeElementosAlmacenados == this.cantidadDeEspacios){
             throw new InventarioLlenoException();
         }
-        Posicion nuevaPosicionElemento = this.obtenerPrimeraPosicionVacia();   //NO SIGUE ESTO SI SE TIRA LA EXCEPCION????
+        Posicion nuevaPosicionElemento = this.obtenerPrimeraPosicionVacia();
         elementosAlmacenados.put(nuevaPosicionElemento,elemento);
         this.cantidadDeElementosAlmacenados++;
     }
@@ -59,6 +59,7 @@ public class Inventario {
             posicionHerramientaEnMano = null;
         }
         this.cantidadDeElementosAlmacenados--;
+        System.out.println(cantidadDeElementosAlmacenados);
 
     }
 
@@ -66,4 +67,7 @@ public class Inventario {
         this.eliminar(posicionHerramientaEnMano);
     }
 
+    public int getCantidadElementos() {
+        return this.cantidadDeElementosAlmacenados;
+    }
 }
