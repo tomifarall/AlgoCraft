@@ -122,7 +122,6 @@ public class Jugador implements IMapeable {
     public Herramienta crearHerramienta(){
         try{
             Herramienta nuevaHerramienta = mesaDeCrafteo.craftear();
-            mesaDeCrafteo.vaciarTablero();
             return nuevaHerramienta;
         }catch (MoldeInvalidoException e){
             throw e;

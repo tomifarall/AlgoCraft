@@ -1,14 +1,11 @@
-import javafx.geometry.Pos;
 import modelo.Direccion.*;
-import modelo.Herramientas.Hacha;
 import modelo.Herramientas.Herramienta;
 import modelo.Juego.Juego;
-import modelo.Jugador.Inventario;
 import modelo.Jugador.Jugador;
+import modelo.Mapa.Casillero;
 import modelo.Mapa.Mapa;
 import modelo.Mapa.Posicion;
-import modelo.Materiales.Madera;
-import modelo.Materiales.Material;
+import modelo.Materiales.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,6 +33,21 @@ public class JuegoTest {
     @Test
     public void test03JuegoDeberiaHaceQueElJugadorGolpeeUnMaterial(){
         Juego juego = new Juego();
+        Direccion izquierda = new DireccionIzquierda();
+        for (int i = 0; i<4; i++) {
+            juego.moverJugador(izquierda);
+        }
+        Posicion posicionMadera = new Posicion(26,21);
+        Material materialGolpeado = juego.getMapa().obtenerMaterialEnPosicion(posicionMadera);
+        int durabilidadMaterial = materialGolpeado.getDurabilidad();
+
+        try {
+            juego.jugadorGolpearMaterial(posicionMadera);
+        }catch (NoSePuedeRecolectarUnMaterialNoDestruidoException e) {}
+
+
+        Assert.assertEquals( durabilidadMaterial -2 , materialGolpeado.getDurabilidad());
+
     }
 
     @Test
@@ -104,6 +116,7 @@ public class JuegoTest {
 
 
 
+
     }
     @Test
     public void test09JuegoDebeAgregarUnMaterialALaMesaDeCrafteo(){
@@ -111,6 +124,8 @@ public class JuegoTest {
         Material material = new Madera();
         Posicion posicionEnMesa = new Posicion(0,0);
         juego.agregarMaterialAMesaDeCrafteo(material,posicionEnMesa);
+        Casillero casillero = juego.getMesaDeCrafteoJugador().get(posicionEnMesa);
+        Assert.assertTrue(!casillero.getOcupante().esVacio());
     }
 
     @Test
@@ -121,6 +136,9 @@ public class JuegoTest {
         juego.agregarMaterialAMesaDeCrafteo(material,posicionEnMesa);
 
         juego.eliminarMaterialDeMesaDeCrafteo(posicionEnMesa);
+
+        Casillero casillero = juego.getMesaDeCrafteoJugador().get(posicionEnMesa);
+        Assert.assertTrue(casillero.getOcupante().esVacio());
 
 
 
@@ -146,22 +164,123 @@ public class JuegoTest {
         juego.agregarMaterialAMesaDeCrafteo(material4,posicionEnMesa4);
         juego.agregarMaterialAMesaDeCrafteo(material5,posicionEnMesa5);
 
-        Herramienta hachaMadera = new Hacha(materialHerraienta);
-
         Herramienta hachaMaderaCraft = juego.crearEnCraftingTable();
+        int fuerza = hachaMaderaCraft.getFuerza();
 
-        //Assert.assertEquals(hachaMadera,hachaMaderaCraft);
+        Material materialAGolpear = new Madera();
+        int durabilidadMaterialAGolpear = materialAGolpear.getDurabilidad();
+        hachaMaderaCraft.golpearMaterial(materialAGolpear);
+
+
+        Assert.assertEquals(durabilidadMaterialAGolpear - fuerza, materialAGolpear.getDurabilidad() );
     }
 
     @Test
-    public  void test13JuegoPermiteCrearUnPico(){}
+    public  void test13JuegoPermiteCrearUnPico(){
+        Juego juego = new Juego();
+        Material material = new Piedra();
+        Material material2 = new Piedra();
+        Material material3 = new Piedra();
+        Material material4 = new Madera();
+        Material material5 = new Madera();
+        Posicion posicionEnMesa = new Posicion(0,0);
+        Posicion posicionEnMesa2 = new Posicion(0,1);
+        Posicion posicionEnMesa3 = new Posicion(0,2);
+        Posicion posicionEnMesa4 = new Posicion(1,1);
+        Posicion posicionEnMesa5 = new Posicion(2,1);
+        juego.agregarMaterialAMesaDeCrafteo(material,posicionEnMesa);
+        juego.agregarMaterialAMesaDeCrafteo(material2,posicionEnMesa2);
+        juego.agregarMaterialAMesaDeCrafteo(material3,posicionEnMesa3);
+        juego.agregarMaterialAMesaDeCrafteo(material4,posicionEnMesa4);
+        juego.agregarMaterialAMesaDeCrafteo(material5,posicionEnMesa5);
+
+        Herramienta picoPiedraCraft = juego.crearEnCraftingTable();
+        int fuerza = picoPiedraCraft.getFuerza();
+
+        Material materialAGolpear = new Metal();
+        int durabilidadMaterialAGolpear = materialAGolpear.getDurabilidad();
+        picoPiedraCraft.golpearMaterial(materialAGolpear);
+
+
+        Assert.assertEquals(durabilidadMaterialAGolpear - fuerza, materialAGolpear.getDurabilidad() );
+    }
 
     @Test
-    public  void test14JuegoPermiteCrearUnPicoFino(){}
+    public  void test14JuegoPermiteCrearUnPicoFino(){
+        Juego juego = new Juego();
+        Material material = new Metal();
+        Material material2 = new Metal();
+        Material material3 = new Metal();
+        Material material4 = new Piedra();
+        Material material5 = new Madera();
+        Material material6 = new Madera();
+        Posicion posicionEnMesa = new Posicion(0,0);
+        Posicion posicionEnMesa2 = new Posicion(0,1);
+        Posicion posicionEnMesa3 = new Posicion(0,2);
+        Posicion posicionEnMesa4 = new Posicion(1,0);
+        Posicion posicionEnMesa5 = new Posicion(1,1);
+        Posicion posicionEnMesa6 = new Posicion(2,1);
+        juego.agregarMaterialAMesaDeCrafteo(material,posicionEnMesa);
+        juego.agregarMaterialAMesaDeCrafteo(material2,posicionEnMesa2);
+        juego.agregarMaterialAMesaDeCrafteo(material3,posicionEnMesa3);
+        juego.agregarMaterialAMesaDeCrafteo(material4,posicionEnMesa4);
+        juego.agregarMaterialAMesaDeCrafteo(material5,posicionEnMesa5);
+        juego.agregarMaterialAMesaDeCrafteo(material6, posicionEnMesa6);
+
+        Herramienta picoFinoCraft = juego.crearEnCraftingTable();
+        int fuerza = picoFinoCraft.getFuerza();
+
+        Material materialAGolpear = new Diamante();
+        int durabilidadMaterialAGolpear = materialAGolpear.getDurabilidad();
+        picoFinoCraft.golpearMaterial(materialAGolpear);
+
+
+        Assert.assertEquals(durabilidadMaterialAGolpear - fuerza, materialAGolpear.getDurabilidad() );
+
+    }
 
     @Test
     public  void test15JuegoPermiteCambiarLaHerramientaEnManoDeJugador(){
+        Juego juego = new Juego();
+        //Creo Pico Fino y se almacena en el inventario
+        Material material = new Metal();
+        Material material2 = new Metal();
+        Material material3 = new Metal();
+        Material material4 = new Piedra();
+        Material material5 = new Madera();
+        Material material6 = new Madera();
+        Posicion posicionEnMesa = new Posicion(0,0);
+        Posicion posicionEnMesa2 = new Posicion(0,1);
+        Posicion posicionEnMesa3 = new Posicion(0,2);
+        Posicion posicionEnMesa4 = new Posicion(1,0);
+        Posicion posicionEnMesa5 = new Posicion(1,1);
+        Posicion posicionEnMesa6 = new Posicion(2,1);
+        juego.agregarMaterialAMesaDeCrafteo(material,posicionEnMesa);
+        juego.agregarMaterialAMesaDeCrafteo(material2,posicionEnMesa2);
+        juego.agregarMaterialAMesaDeCrafteo(material3,posicionEnMesa3);
+        juego.agregarMaterialAMesaDeCrafteo(material4,posicionEnMesa4);
+        juego.agregarMaterialAMesaDeCrafteo(material5,posicionEnMesa5);
+        juego.agregarMaterialAMesaDeCrafteo(material6, posicionEnMesa6);
+        juego.crearEnCraftingTable();
+        Posicion posicionPicoFino = new Posicion(0,1);
+        juego.elegirNuevaHerramientaEnMano(posicionPicoFino);
 
+        //Muevo AL jugador hasta una posicion adyacente a un Diamante
+        Direccion derecha = new DireccionDerecha();
+        Direccion arriba = new DireccionArriba();
+        for ( int i = 0; i<10; i++){
+            juego.moverJugador(arriba);
+        }
+        juego.moverJugador(derecha);
+        Posicion posicionDiamanteEnMapa = new Posicion(15,27);
+        Material materialAGolpear = juego.getMapa().obtenerMaterialEnPosicion(posicionDiamanteEnMapa);
+        int durabilidadMaterialAGolpear = materialAGolpear.getDurabilidad();
+
+        int fuerzaPicoFino = 20;
+
+        juego.getJugador().getHerramientaEnMano().golpearMaterial(materialAGolpear);
+
+        Assert.assertEquals(durabilidadMaterialAGolpear - fuerzaPicoFino, materialAGolpear.getDurabilidad() );
     }
 
 }

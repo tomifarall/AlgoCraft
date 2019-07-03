@@ -78,13 +78,15 @@ public class MesaDeCrafteo {
 
     public Herramienta craftear(){
         for (Molde molde : this.moldes){
-            if ( molde.esIgual(this.tableroDeCraft))
+            if ( molde.esIgual(this.tableroDeCraft)){
+                this.vaciarTablero();
                 return molde.create();
+            }
         }
         throw new MoldeInvalidoException();
     }
 
-    public void vaciarTablero(){
+    private void vaciarTablero(){
         this.inicializarTableroDeCraft();
     }
 

@@ -59,7 +59,6 @@ public class Inventario {
             posicionHerramientaEnMano = null;
         }
         this.cantidadDeElementosAlmacenados--;
-        System.out.println(cantidadDeElementosAlmacenados);
 
     }
 
