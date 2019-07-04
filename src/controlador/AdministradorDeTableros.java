@@ -101,22 +101,22 @@ public class AdministradorDeTableros {
     private ImageView generarImageviewHerramienta(Herramienta herramienta){
         Material materialHerramienta = herramienta.getMaterial();
         if (herramienta instanceof Hacha) {
-            if (materialHerramienta instanceof Madera) return this.generarImageview(casilleroHachaDeMadera);
-            if (materialHerramienta instanceof Piedra) return this.generarImageview(casilleroHachaDePiedra);
-            if (materialHerramienta instanceof Metal) return this.generarImageview(casilleroHachaDeMetal);
+            if (materialHerramienta.getTipo()== "madera") return this.generarImageview(casilleroHachaDeMadera);
+            if (materialHerramienta.getTipo()== "piedra") return this.generarImageview(casilleroHachaDePiedra);
+            if (materialHerramienta.getTipo()== "metal") return this.generarImageview(casilleroHachaDeMetal);
         }
         if (herramienta instanceof Pico){
-            if (materialHerramienta instanceof Madera) return this.generarImageview(casilleroPicoDeMadera);
-            if (materialHerramienta instanceof Piedra) return this.generarImageview(casilleroPicoDePiedra);
-            if (materialHerramienta instanceof Metal) return this.generarImageview(casilleroPicoDeMetal);
+            if (materialHerramienta.getTipo()== "madera") return this.generarImageview(casilleroPicoDeMadera);
+            if (materialHerramienta.getTipo()== "piedra") return this.generarImageview(casilleroPicoDePiedra);
+            if (materialHerramienta.getTipo()== "metal") return this.generarImageview(casilleroPicoDeMetal);
         }
         return this.generarImageview(casilleroPicoFino);
     }
 
     private ImageView generarImageviewMaterial(Material material){
-        if (material instanceof Piedra) return this.generarImageview(casilleroPiedra);
-        if (material instanceof Madera) return this.generarImageview(casilleroMadera);
-        if (material instanceof Metal) return this.generarImageview(casilleroMetal);
+        if (material.getTipo()== "piedra") return this.generarImageview(casilleroPiedra);
+        if (material.getTipo()== "madera") return this.generarImageview(casilleroMadera);
+        if (material.getTipo()== "metal") return this.generarImageview(casilleroMetal);
         return this.generarImageview(casilleroDiamante);
 
     }
@@ -136,8 +136,8 @@ public class AdministradorDeTableros {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 Casillero casillero = mesaDeCrafteo.get(new Posicion(i,j));
-                Object ocupanteCasillero = casillero.getOcupante();
-                if (ocupanteCasillero instanceof Vacio){
+                IMapeable ocupanteCasillero = casillero.getOcupante();
+                if (ocupanteCasillero.esVacio()){
                     nuevoCasillero = this.generarImageview(casilleroVacio);
                     contenedorMapaJuego.setearEventoACasilleroCraftingTable(nuevoCasillero);
                 }else{
