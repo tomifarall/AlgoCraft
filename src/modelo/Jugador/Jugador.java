@@ -51,7 +51,7 @@ public class Jugador implements IMapeable {
     public void golpearMaterial(IMaterialMapa material, Posicion posicion){
         if (herramientaEnMano == null) throw new NoSePuedeGolpearUnMaterialSinHerramientaEnManoException();  //VER DESPUÉS BIEN EN QUE PAQUETE PONER LA ÚLTIMA EXCEPCIÓN
         try{
-            mapa.verificarAdyacenciaConPos(posicion);
+            mapa.verificarAdyacenciaConPosicion(posicion);
             herramientaEnMano.golpearMaterial(material);
             recolectarMaterial(material,posicion);
         }catch(NoSePuedeRecolectarUnMaterialNoDestruidoException |
@@ -99,8 +99,8 @@ public class Jugador implements IMapeable {
         inventario.agregar(elemento);
     }
 
-    public void eliminarElementoDelInventario(Posicion posicionMaterial) {
-        inventario.eliminar(posicionMaterial);
+    public void eliminarElementoDelInventario(Posicion posicionElemento) {
+        inventario.eliminar(posicionElemento);
     }
 
     public HashMap<Posicion, IColeccionable> getInventario() {

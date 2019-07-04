@@ -87,7 +87,7 @@ public class MapaTest {
         Mapa mapa = Mapa.getMapa();
         Jugador jugador = new Jugador(mapa);
         Posicion posicionDada = new Posicion(26,25);
-        mapa.verificarAdyacenciaConPos(posicionDada);
+        mapa.verificarAdyacenciaConPosicion(posicionDada);
     }
 
     @Test  (expected = PosicionNoAdyacenteException.class)
@@ -95,7 +95,7 @@ public class MapaTest {
         Mapa mapa = Mapa.getMapa();
         Jugador jugador = new Jugador(mapa);
         Posicion posicionDada = new Posicion(30,30);
-        mapa.verificarAdyacenciaConPos(posicionDada);
+        mapa.verificarAdyacenciaConPosicion(posicionDada);
 
     }
 }

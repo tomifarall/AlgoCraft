@@ -5,7 +5,6 @@ import modelo.Herramientas.Herramienta;
 import modelo.Interfaces.IMapeable;
 import modelo.Mapa.Casillero;
 import modelo.Mapa.Posicion;
-import modelo.Mapa.PosicionInvalidaException;
 import modelo.Materiales.Material;
 import modelo.Materiales.Vacio;
 import modelo.Moldes.*;
@@ -71,7 +70,7 @@ public class MesaDeCrafteo {
         if (casilleroDeCraft.getOcupante().esVacio()) {
             throw new PosicionVaciaEnLaMesaDeCrafteoException(); //// encap
         }
-        IMapeable materialEliminado = casilleroDeCraft.removeOcupante();
+        IMapeable materialEliminado = casilleroDeCraft.eliminarOcupante();
         return  ( Material) materialEliminado; //casteo
     }
 

@@ -40,7 +40,7 @@ public class CasilleroTest {
         Casillero casillero = new Casillero();
         IMapeable material = new Piedra();
         casillero.ocuparCon(material);
-        casillero.removeOcupante();
+        casillero.eliminarOcupante();
         IMapeable ocupanteCasillero = casillero.getOcupante();
 
         assert ocupanteCasillero.esVacio();

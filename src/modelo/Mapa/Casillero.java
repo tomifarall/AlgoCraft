@@ -6,14 +6,9 @@ import modelo.Materiales.Vacio;
 public class Casillero {
 
     private IMapeable ocupante;
-    private Posicion posicion;
 
     public  Casillero(){
         this.ocupante = new Vacio();
-    }
-
-    public  Posicion getPosicion(){
-        return  this.posicion;
     }
 
     public void ocuparCon(IMapeable ocupante) {
@@ -24,7 +19,7 @@ public class Casillero {
         }
     }
 
-    public IMapeable removeOcupante(){
+    public IMapeable eliminarOcupante(){
         if (this.ocupante.esVacio()){
             throw new NoSePuedeEliminarUnElementoVacioException();
         }

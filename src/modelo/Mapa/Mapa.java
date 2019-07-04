@@ -43,9 +43,9 @@ public class Mapa {
 
     }
 
-    private void rellenarConElementos(int largoIn, int largoEnd, int anchoIn, int anchoEnd, HashMap tablero, String elemento) {
-        for (int i =largoIn ; i <= largoEnd; i++) {
-            for (int j = anchoIn; j <= anchoEnd; j++) {
+    private void rellenarConElementos(int inicioI, int finI, int inicioJ, int finJ, HashMap tablero, String elemento) {
+        for (int i =inicioI ; i <= finI; i++) {
+            for (int j = inicioJ; j <= finJ; j++) {
                 IMapeable elementoMapa = obtenerElemento(elemento);
                 Posicion posicion = new Posicion(i,j);
                 elementoMapa.setPosicion(posicion);
@@ -99,7 +99,7 @@ public class Mapa {
                 return;
             }
             Casillero casilleroJugador = tablero.get(posicionJugador);
-            casilleroJugador.removeOcupante();
+            casilleroJugador.eliminarOcupante();
             this.posicionJugador = posicion;
             Casillero nuevoCasilleroJugador = tablero.get(posicionJugador);
             nuevoCasilleroJugador.ocuparCon(jugador);
@@ -116,7 +116,7 @@ public class Mapa {
         }
         Casillero nuevoCasillero = this.tablero.get(nuevaPosicion);
         Casillero casilleroJugador = this.tablero.get(posicionJugador);
-        casilleroJugador.removeOcupante();
+        casilleroJugador.eliminarOcupante();
         try {
             nuevoCasillero.ocuparCon(elemento);
         } catch (CasilleroOcupadoException e) {
@@ -128,7 +128,7 @@ public class Mapa {
 
     public void eliminarElemento(Posicion posicion){
         Casillero casilleroElemento = this.tablero.get(posicion);
-        casilleroElemento.removeOcupante();
+        casilleroElemento.eliminarOcupante();
     }
 
     public Material obtenerMaterialEnPosicion(Posicion posicion) {
@@ -136,7 +136,7 @@ public class Mapa {
         return  (Material) casilleroABuscar.getOcupante();
     }
 
-    public void verificarAdyacenciaConPos(Posicion posicion) {
+    public void verificarAdyacenciaConPosicion(Posicion posicion) {
         ArrayList<Posicion> adyacentes = this.obtenerAdyacentes(posicionJugador);
         for (Posicion adyacente : adyacentes) {
             if (posicion.equals(adyacente)) return;
