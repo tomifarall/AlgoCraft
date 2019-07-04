@@ -1,7 +1,7 @@
 package controlador;
 
 import vista.aplicacion.ContenedorMapaJuego;
-import modelo.Desgastes.HerramientaRotaException;
+import modelo.Herramientas.HerramientaRotaException;
 import modelo.Juego.Juego;
 import modelo.Jugador.InventarioLlenoException;
 import modelo.Jugador.NoSePuedeGolpearUnMaterialSinHerramientaEnManoException;

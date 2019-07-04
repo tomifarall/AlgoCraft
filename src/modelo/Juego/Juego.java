@@ -1,17 +1,13 @@
 package modelo.Juego;
 
-import modelo.Desgastes.HerramientaRotaException;
-import modelo.Direccion.*;
+import modelo.Herramientas.HerramientaRotaException;
+import modelo.Jugador.*;
 import modelo.Herramientas.Herramienta;
 import modelo.Interfaces.IColeccionable;
-import modelo.Interfaces.IMapeable;
-import modelo.Jugador.InventarioLlenoException;
-import modelo.Jugador.Jugador;
-import modelo.Jugador.NoSePuedeGolpearUnMaterialSinHerramientaEnManoException;
 import modelo.Mapa.*;
 import modelo.Materiales.Material;
 import modelo.Materiales.NoSePuedeRecolectarUnMaterialNoDestruidoException;
-import modelo.Moldes.MoldeInvalidoException;
+
 
 import java.util.HashMap;
 
@@ -34,7 +30,6 @@ public class Juego {
         abajo = new DireccionAbajo();
     }
 
-    //GETTERS QUE CAPAZ SE PUEDAN SACAR
     public Jugador getJugador(){ return jugador;}
 
     public Mapa getMapa(){return mapa;}

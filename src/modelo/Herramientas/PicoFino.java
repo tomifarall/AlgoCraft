@@ -1,7 +1,5 @@
 package modelo.Herramientas;
 
-import modelo.Desgastes.DesgastePorcentual;
-import modelo.Desgastes.HerramientaRotaException;
 import modelo.Interfaces.IMaterialMapa;
 import modelo.Materiales.*;
 

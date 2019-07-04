@@ -1,8 +1,6 @@
 package modelo.Interfaces;
 
-import modelo.Herramientas.Hacha;
-import modelo.Herramientas.Pico;
-import modelo.Herramientas.PicoFino;
+import modelo.Herramientas.*;
 
 public interface IMaterialHerramienta {
 

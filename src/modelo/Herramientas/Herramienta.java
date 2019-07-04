@@ -1,6 +1,5 @@
 package modelo.Herramientas;
 
-import modelo.Desgastes.Desgaste;
 import modelo.Interfaces.IColeccionable;
 import modelo.Interfaces.IMaterialMapa;
 import modelo.Materiales.*;

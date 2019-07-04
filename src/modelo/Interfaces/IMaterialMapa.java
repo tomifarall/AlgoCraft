@@ -1,13 +1,7 @@
 package modelo.Interfaces;
 
-import modelo.Desgastes.Desgaste;
-import modelo.Herramientas.Hacha;
-import modelo.Herramientas.Pico;
-import modelo.Herramientas.PicoFino;
-import modelo.Materiales.Madera;
-import modelo.Materiales.Metal;
-import modelo.Materiales.MetalYPiedra;
-import modelo.Materiales.Piedra;
+import modelo.Herramientas.*;
+import modelo.Materiales.*;
 
 public interface IMaterialMapa {
 

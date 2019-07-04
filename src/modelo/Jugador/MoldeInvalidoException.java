@@ -1,4 +1,4 @@
-package modelo.Moldes;
+package modelo.Jugador;
 
 public class MoldeInvalidoException extends RuntimeException {
 }

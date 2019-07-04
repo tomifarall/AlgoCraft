@@ -1,5 +1,5 @@
-import modelo.Desgastes.FuerzaInvalidaException;
-import modelo.Desgastes.HerramientaRotaException;
+import modelo.Herramientas.FuerzaInvalidaException;
+import modelo.Herramientas.HerramientaRotaException;
 import modelo.Herramientas.Herramienta;
 import modelo.Herramientas.Hacha;
 import modelo.Herramientas.Pico;

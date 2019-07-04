@@ -2,10 +2,7 @@ package modelo.Jugador;
 
 import modelo.Herramientas.Herramienta;
 import modelo.Interfaces.IColeccionable;
-import modelo.Interfaces.IMapeable;
 import modelo.Mapa.Posicion;
-import modelo.Materiales.Material;
-
 import java.util.HashMap;
 
 public class Inventario {

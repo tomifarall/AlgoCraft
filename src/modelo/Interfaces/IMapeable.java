@@ -1,4 +1,5 @@
 package modelo.Interfaces;
+
 import modelo.Mapa.Posicion;
 
 public interface IMapeable {

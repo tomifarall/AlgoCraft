@@ -1,8 +1,6 @@
 package modelo.Materiales;
-import modelo.Interfaces.IColeccionable;
-import modelo.Interfaces.IMapeable;
-import modelo.Interfaces.IMaterialHerramienta;
-import modelo.Interfaces.IMaterialMapa;
+
+import modelo.Interfaces.*;
 import modelo.Mapa.Posicion;
 
 public abstract class Material implements IMapeable, IMaterialHerramienta, IMaterialMapa, IColeccionable {

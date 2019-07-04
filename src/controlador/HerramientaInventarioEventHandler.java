@@ -5,7 +5,6 @@ import modelo.Juego.Juego;
 import modelo.Mapa.Posicion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
 import javafx.scene.control.*;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;

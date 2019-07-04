@@ -1,6 +1,6 @@
 
-import modelo.Direccion.Direccion;
-import modelo.Direccion.DireccionIzquierda;
+import modelo.Jugador.Direccion;
+import modelo.Jugador.DireccionIzquierda;
 import modelo.Interfaces.IMapeable;
 import modelo.Jugador.Jugador;
 import modelo.Mapa.Casillero;

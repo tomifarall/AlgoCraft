@@ -3,7 +3,7 @@ package controlador;
 import vista.aplicacion.ContenedorMapaJuego;
 import modelo.Juego.Juego;
 import modelo.Jugador.InventarioLlenoException;
-import modelo.Moldes.MoldeInvalidoException;
+import modelo.Jugador.MoldeInvalidoException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

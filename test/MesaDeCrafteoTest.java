@@ -2,13 +2,12 @@ import modelo.Herramientas.Hacha;
 import modelo.Herramientas.Herramienta;
 import modelo.Herramientas.Pico;
 import modelo.Herramientas.PicoFino;
-import modelo.Interfaces.IMaterialMapa;
 import modelo.Jugador.MesaDeCrafteo;
 import modelo.Jugador.PosicionVaciaEnLaMesaDeCrafteoException;
 import modelo.Mapa.Casillero;
 import modelo.Mapa.Posicion;
 import modelo.Materiales.*;
-import modelo.Moldes.MoldeInvalidoException;
+import modelo.Jugador.MoldeInvalidoException;
 import org.junit.Assert;
 import org.junit.Test;
 

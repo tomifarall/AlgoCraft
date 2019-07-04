@@ -7,7 +7,6 @@ import modelo.Mapa.Casillero;
 import modelo.Mapa.Posicion;
 import modelo.Materiales.Material;
 import modelo.Materiales.Vacio;
-import modelo.Moldes.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

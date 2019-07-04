@@ -1,7 +1,6 @@
 
 import modelo.Herramientas.Hacha;
 import modelo.Interfaces.IColeccionable;
-import modelo.Interfaces.IMapeable;
 import modelo.Jugador.Inventario;
 import modelo.Jugador.InventarioLlenoException;
 import modelo.Jugador.Jugador;
@@ -20,7 +19,7 @@ public class InventarioTest {
         Inventario inventario = new Inventario(jugador);
 
 
-        Assert.assertNotEquals(inventario, null);
+        Assert.assertNotNull(inventario);
     }
 
     @Test

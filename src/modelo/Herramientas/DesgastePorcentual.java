@@ -1,4 +1,4 @@
-package modelo.Desgastes;
+package modelo.Herramientas;
 
 public class DesgastePorcentual extends Desgaste {
 

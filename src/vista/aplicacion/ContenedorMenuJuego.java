@@ -1,7 +1,6 @@
 package vista.aplicacion;
 
-import controlador.BotonInstruccionesEventHandler;
-import controlador.BotonJugarEventHandler;
+import controlador.BotonCambioDeEscenaEventHandler;
 import controlador.BotonSalirEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -71,7 +70,7 @@ public class ContenedorMenuJuego extends VBox {
         botonJugar.setGraphic(imageViewJugar);
         botonJugar.setAlignment(Pos.CENTER);
         botonJugar.setMinSize(190,45);
-        BotonJugarEventHandler botonJugarHandler = new BotonJugarEventHandler(stage, proximaEscena);
+        BotonCambioDeEscenaEventHandler botonJugarHandler = new BotonCambioDeEscenaEventHandler(stage, proximaEscena);
         botonJugar.setOnAction(botonJugarHandler);
         this.getChildren().add(botonJugar);
     }
@@ -80,7 +79,7 @@ public class ContenedorMenuJuego extends VBox {
         Button botonInstrucciones = new Button("Instrucciones del juego.");
         ContenedorInstruccionesDelJuego contenedorInstruccionesDelJuego= new ContenedorInstruccionesDelJuego(stage,proximaEscena);
         Scene escenaInstrucciones = new Scene(contenedorInstruccionesDelJuego,640,480);
-        BotonInstruccionesEventHandler eventHandlerInstrucciones = new BotonInstruccionesEventHandler(stage,escenaInstrucciones);
+        BotonCambioDeEscenaEventHandler eventHandlerInstrucciones = new BotonCambioDeEscenaEventHandler(stage,escenaInstrucciones);
         Image imagenInstrucciones = new Image("vista\\imagenes\\imageninstrucciones.png");
         ImageView imageviewInstrucciones = new ImageView(imagenInstrucciones);
         imageviewInstrucciones.setFitWidth(40);

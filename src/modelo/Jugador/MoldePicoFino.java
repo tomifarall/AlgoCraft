@@ -1,4 +1,4 @@
-package modelo.Moldes;
+package modelo.Jugador;
 
 import modelo.Herramientas.Herramienta;
 import modelo.Herramientas.PicoFino;

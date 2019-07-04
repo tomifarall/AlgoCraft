@@ -127,12 +127,10 @@ public class ContenedorMapaJuego extends BorderPane {
         });
     }
 
-    //DESDE ACA SON LAS FUNCIONES DE LA PAGINA PARA DRAG AND DROP
+
     private void dragDetected(MouseEvent event, ImageView imageViewMaterial) {
-        // Initiate a drag-and-drop gesture
         Dragboard dragboard = imageViewMaterial.startDragAndDrop(TransferMode.COPY_OR_MOVE);
 
-        // Add the source text to the Dragboard         //MMMM BORRAR???
         ClipboardContent content = new ClipboardContent();
         content.putImage(imageViewMaterial.getImage());
         dragboard.setContent(content);
@@ -140,8 +138,6 @@ public class ContenedorMapaJuego extends BorderPane {
     }
 
     private void dragOver(DragEvent event) {
-        // If drag board has a string, let the event know that
-        // the target accepts copy and move transfer modes
         Dragboard dragboard = event.getDragboard();
 
         if (dragboard.hasImage()) {
@@ -151,16 +147,13 @@ public class ContenedorMapaJuego extends BorderPane {
     }
 
     private void dragDropped(DragEvent event, ImageView imageviewCasilleroCraftingTablero) {
-        // Transfer the data to the target
         Dragboard dragboard = event.getDragboard();
 
         if (dragboard.hasImage()) {
             imageviewCasilleroCraftingTablero.setImage(dragboard.getImage());
-            // Data transfer is successful
             event.setDropCompleted(true);
             this.ultimoElementoDraggeado = imageviewCasilleroCraftingTablero;
         } else {
-            // Data transfer is not successful
             event.setDropCompleted(false);
         }
 
@@ -168,7 +161,6 @@ public class ContenedorMapaJuego extends BorderPane {
     }
 
     private void dragDone(DragEvent event, ImageView imageviewMaterial) {
-        // Check how data was transfered to the target. If it was moved, clear the text in the source.
         TransferMode modeUsed = event.getTransferMode();
 
         if (modeUsed == TransferMode.MOVE) {

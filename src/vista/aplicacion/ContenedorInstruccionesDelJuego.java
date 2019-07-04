@@ -1,6 +1,6 @@
 package vista.aplicacion;
 
-import controlador.BotonJugarEventHandler;
+import controlador.BotonCambioDeEscenaEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -51,7 +51,7 @@ public class ContenedorInstruccionesDelJuego extends BorderPane {
         Image piedra = new Image("vista\\imagenes\\piedra.png");
         Image piedraCaracteristicas = new Image("vista\\imagenes\\piedracaracteristicas.png");
         Image diamante = new Image("vista\\imagenes\\diamante.jpeg");
-        Image diamanteCaracteristicas = new Image("vista\\imagenes\\maderacaracteristicas.png");
+        Image diamanteCaracteristicas = new Image("vista\\imagenes\\diamantecaracteristicas.png");
         Label labelCaracteristicas = this.generarLabel("A continuación se muestran las características de los distintos materiales en el mapa:");
         gridMateriales.add(labelCaracteristicas,0,0,2,1);
         gridMateriales.addRow(1,this.generarImageViewMaterial(madera),this.generarImageViewCaracteristicas(maderaCaracteristicas));
@@ -77,7 +77,7 @@ public class ContenedorInstruccionesDelJuego extends BorderPane {
         comenzarAJugar.setFitHeight(40);
         comenzarAJugar.setFitWidth(40);
         botonComenzarAJugar.setGraphic(comenzarAJugar);
-        BotonJugarEventHandler eventHandlerBotonComenzarAJugar = new BotonJugarEventHandler(stageMenuJuego,escenaMenuJuego);
+        BotonCambioDeEscenaEventHandler eventHandlerBotonComenzarAJugar = new BotonCambioDeEscenaEventHandler(stageMenuJuego,escenaMenuJuego);
         botonComenzarAJugar.setOnAction(eventHandlerBotonComenzarAJugar);
         botonComenzarAJugar.setAlignment(Pos.BOTTOM_LEFT);
         vboxCentral.getChildren().add(botonComenzarAJugar);

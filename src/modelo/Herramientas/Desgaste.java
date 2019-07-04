@@ -1,4 +1,4 @@
-package modelo.Desgastes;
+package modelo.Herramientas;
 
 import modelo.Materiales.Diamante;
 import modelo.Materiales.Madera;

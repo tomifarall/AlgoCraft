@@ -2,9 +2,7 @@ package controlador;
 
 import modelo.Materiales.*;
 import vista.aplicacion.ContenedorMapaJuego;
-import modelo.Herramientas.Hacha;
-import modelo.Herramientas.Herramienta;
-import modelo.Herramientas.Pico;
+import modelo.Herramientas.*;
 import modelo.Interfaces.IColeccionable;
 import modelo.Interfaces.IMapeable;
 import modelo.Juego.Juego;
@@ -100,7 +98,7 @@ public class AdministradorDeTableros {
         return null;
     }
 
-    private ImageView generarImageviewHerramienta(Herramienta herramienta){ //NO SE PUEDE HACER SIN EL GET MATERIAL????????
+    private ImageView generarImageviewHerramienta(Herramienta herramienta){
         Material materialHerramienta = herramienta.getMaterial();
         if (herramienta instanceof Hacha) {
             if (materialHerramienta instanceof Madera) return this.generarImageview(casilleroHachaDeMadera);
@@ -218,11 +216,6 @@ public class AdministradorDeTableros {
         ImageView imageviewMapeableEnPosicionSiguienteJugador = this.generarImageview(imagenMapeableEnPosicionSiguienteJugador);
         mapaJuego.add(imageviewMapeableEnPosicionJugador,posicionJJugador,posicionIJugador,1,1);
         mapaJuego.add(imageviewMapeableEnPosicionSiguienteJugador,posicionJSiguienteJugador,posicionISiguienteJugador,1,1);
-
-
-  /*   MANERA HARDCODEADA VER QUE PREFIEREN
-        mapaJuego.add(this.generarImageview(pasto),posicionJJugador,posicionIJugador,1,1);
-        mapaJuego.add(this.generarImageview(jugador),posicionJSiguienteJugador,posicionISiguienteJugador,1,1);*/
     }
 
     public void redibujarMapa(Juego juego,Posicion posicionMaterial){

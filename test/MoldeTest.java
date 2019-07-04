@@ -3,7 +3,7 @@ import modelo.Materiales.Diamante;
 import modelo.Materiales.Madera;
 import modelo.Materiales.Material;
 import modelo.Materiales.Piedra;
-import modelo.Moldes.*;
+import modelo.Jugador.*;
 import org.junit.Assert;
 import org.junit.Test;
 

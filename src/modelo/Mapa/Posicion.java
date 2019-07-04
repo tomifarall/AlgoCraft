@@ -1,6 +1,6 @@
 package modelo.Mapa;
 
-import modelo.Direccion.Direccion;
+import modelo.Jugador.Direccion;
 
 public class Posicion {
 

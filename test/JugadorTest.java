@@ -1,8 +1,5 @@
-import modelo.Interfaces.IMaterialMapa;
 import modelo.Jugador.Jugador;
 import modelo.Mapa.Mapa;
-import modelo.Mapa.Posicion;
-import modelo.Materiales.*;
 import org.junit.Assert;
 import org.junit.Test;
 

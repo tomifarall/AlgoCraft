@@ -1,4 +1,4 @@
-import modelo.Direccion.*;
+import modelo.Jugador.*;
 import org.junit.Test;
 import modelo.Mapa.Posicion;
 

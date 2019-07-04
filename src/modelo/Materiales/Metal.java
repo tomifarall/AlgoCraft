@@ -1,10 +1,6 @@
 package modelo.Materiales;
 
-import modelo.Desgastes.Desgaste;
-import modelo.Desgastes.HerramientaRotaException;
-import modelo.Herramientas.Hacha;
-import modelo.Herramientas.Pico;
-import modelo.Herramientas.PicoFino;
+import modelo.Herramientas.*;
 import modelo.Interfaces.IMaterialMapa;
 
 public class Metal extends Material {

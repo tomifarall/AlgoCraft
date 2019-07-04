@@ -1,4 +1,4 @@
-package modelo.Moldes;
+package modelo.Jugador;
 
 import modelo.Herramientas.Hacha;
 import modelo.Herramientas.Herramienta;
@@ -7,7 +7,6 @@ import modelo.Mapa.CasilleroOcupadoException;
 import modelo.Mapa.Posicion;
 import modelo.Materiales.Material;
 import modelo.Materiales.Metal;
-import modelo.Materiales.Piedra;
 
 import java.util.HashMap;
 

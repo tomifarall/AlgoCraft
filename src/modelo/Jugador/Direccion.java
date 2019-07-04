@@ -1,4 +1,4 @@
-package modelo.Direccion;
+package modelo.Jugador;
 
 import modelo.Mapa.Posicion;
 

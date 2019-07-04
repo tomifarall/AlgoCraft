@@ -1,7 +1,6 @@
 package modelo.Jugador;
 
-import modelo.Desgastes.HerramientaRotaException;
-import modelo.Direccion.*;
+import modelo.Herramientas.HerramientaRotaException;
 import modelo.Herramientas.Hacha;
 import modelo.Herramientas.Herramienta;
 import modelo.Interfaces.IColeccionable;
@@ -11,7 +10,6 @@ import modelo.Mapa.*;
 import modelo.Materiales.Madera;
 import modelo.Materiales.Material;
 import modelo.Materiales.NoSePuedeRecolectarUnMaterialNoDestruidoException;
-import modelo.Moldes.MoldeInvalidoException;
 
 import java.util.HashMap;
 
@@ -49,7 +47,7 @@ public class Jugador implements IMapeable {
     }
 
     public void golpearMaterial(IMaterialMapa material, Posicion posicion){
-        if (herramientaEnMano == null) throw new NoSePuedeGolpearUnMaterialSinHerramientaEnManoException();  //VER DESPUÉS BIEN EN QUE PAQUETE PONER LA ÚLTIMA EXCEPCIÓN
+        if (herramientaEnMano == null) throw new NoSePuedeGolpearUnMaterialSinHerramientaEnManoException();
         try{
             mapa.verificarAdyacenciaConPosicion(posicion);
             herramientaEnMano.golpearMaterial(material);
@@ -83,7 +81,7 @@ public class Jugador implements IMapeable {
     }
 
     public void ponerMaterialEnMesaDeCrafteo(Material material, Posicion posicion){
-        mesaDeCrafteo.agregarMaterial(material, posicion);       //EXCEPCION EN CASO DE ESTAR LLENA?????? //probar que pasa con la interfaz grafica
+        mesaDeCrafteo.agregarMaterial(material, posicion);
     }
 
     public void eliminarMaterialEnMesaDeCrafteo(Posicion posicionMaterialEnMesaDeCrafteo){
@@ -145,7 +143,7 @@ public class Jugador implements IMapeable {
 
     @Override
     public String getTipo() {
-        return "jugador";  //SACAR DESPUES
+        return "jugador";
     }
 
     @Override

@@ -1,6 +1,10 @@
 package controlador;
 
-import modelo.Direccion.*;
+import modelo.Jugador.DireccionDerecha;
+import modelo.Jugador.DireccionIzquierda;
+import modelo.Jugador.DireccionAbajo;
+import modelo.Jugador.DireccionArriba;
+import modelo.Jugador.Direccion;
 import vista.aplicacion.ContenedorMapaJuego;
 import modelo.Juego.Juego;
 import modelo.Mapa.CasilleroOcupadoException;

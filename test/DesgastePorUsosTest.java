@@ -1,5 +1,4 @@
-import modelo.Desgastes.*;
-
+import modelo.Herramientas.*;
 import modelo.Materiales.Diamante;
 import modelo.Materiales.Madera;
 import modelo.Materiales.Metal;

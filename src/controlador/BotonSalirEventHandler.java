@@ -8,11 +8,9 @@ import javafx.stage.Stage;
 public class BotonSalirEventHandler implements EventHandler<ActionEvent> {
 
     private Button boton;
- //   private Stage stage;
 
-    public BotonSalirEventHandler(Button boton/* Stage stage*/){
+    public BotonSalirEventHandler(Button boton){
         this.boton = boton;
-   //     this.stage = stage;
     }
 
     @Override

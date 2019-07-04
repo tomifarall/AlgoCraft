@@ -1,10 +1,9 @@
 package modelo.Mapa;
-import com.opencsv.CSVReader;
-import modelo.Direccion.*;
-import modelo.Interfaces.IMapeable;
-import modelo.Jugador.Jugador;
-import modelo.Materiales.*;
 
+import com.opencsv.CSVReader;
+import modelo.Jugador.*;
+import modelo.Interfaces.IMapeable;
+import modelo.Materiales.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -40,7 +39,6 @@ public class Mapa {
             }
         }
         inyectarEnMapa(archivo,this.tablero);
-
     }
 
     private void rellenarConElementos(int inicioI, int finI, int inicioJ, int finJ, HashMap tablero, String elemento) {

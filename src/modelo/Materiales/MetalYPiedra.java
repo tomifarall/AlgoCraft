@@ -1,7 +1,7 @@
 package modelo.Materiales;
 
-import modelo.Desgastes.Desgaste;
-import modelo.Desgastes.HerramientaRotaException;
+import modelo.Herramientas.Desgaste;
+import modelo.Herramientas.HerramientaRotaException;
 import modelo.Herramientas.Hacha;
 import modelo.Herramientas.Pico;
 import modelo.Herramientas.PicoFino;

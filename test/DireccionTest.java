@@ -1,5 +1,5 @@
 import modelo.Mapa.*;
-import modelo.Direccion.*;
+import modelo.Jugador.*;
 import org.junit.Test;
 
 public class DireccionTest {

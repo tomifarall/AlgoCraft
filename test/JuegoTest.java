@@ -1,4 +1,4 @@
-import modelo.Direccion.*;
+import modelo.Jugador.*;
 import modelo.Herramientas.Herramienta;
 import modelo.Juego.Juego;
 import modelo.Jugador.Jugador;

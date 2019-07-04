@@ -1,7 +1,7 @@
-import modelo.Desgastes.Desgaste;
-import modelo.Desgastes.DesgasteLineal;
-import modelo.Desgastes.DesgastePorUsos;
-import modelo.Desgastes.DesgastePorcentual;
+import modelo.Herramientas.Desgaste;
+import modelo.Herramientas.DesgasteLineal;
+import modelo.Herramientas.DesgastePorUsos;
+import modelo.Herramientas.DesgastePorcentual;
 import modelo.Herramientas.Hacha;
 import modelo.Herramientas.Pico;
 import modelo.Herramientas.PicoFino;
