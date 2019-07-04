@@ -59,12 +59,4 @@ public abstract class Material implements IMapeable, IMaterialHerramienta, IMate
         return ((this.getDurabilidadInicial() == elementoMaterial.getDurabilidadInicial()));
     }
 
-
-   /* public boolean esigual (Material material) {
-
-        if (material == this) {
-            return true;
-        }
-        return ((this.getDurabilidad() == material.getDurabilidad()));
-    }*/
 }

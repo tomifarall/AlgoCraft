@@ -16,7 +16,7 @@ public class Vacio  implements IColeccionable, IMapeable {
     }
 
     @Override
-    public void setPosicion(Posicion posicion) {   //VER DESPUESSS
+    public void setPosicion(Posicion posicion) {
     }
 
     @Override

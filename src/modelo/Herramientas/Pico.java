@@ -10,19 +10,17 @@ public class Pico extends Herramienta {
 
 
     public Pico(Madera madera) {
-        //material = new Madera();
-        material = madera;
-        desgaste = new DesgasteLineal(100,2,1);
+        this.material = madera;
+        this.desgaste = new DesgasteLineal(100,2,1);
     }
     public Pico(Piedra piedra) {
-        //material = new Piedra();
-        material = piedra;
-        desgaste = new DesgasteLineal(200,4,1/1.5f);
+
+        this.material = piedra;
+        this.desgaste = new DesgasteLineal(200,4,1/1.5f);
     }
     public Pico(Metal metal) {
-        //material = new Metal();
-        material = metal;
-        desgaste = new DesgastePorUsos(400,10, 12);
+        this.material = metal;
+        this.desgaste = new DesgastePorUsos(400,10, 12);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package vista.aplicacion;
 
-import controlador.BotonComenzarAJugarEventHandler;
+import controlador.BotonJugarEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -77,7 +77,7 @@ public class ContenedorInstruccionesDelJuego extends BorderPane {
         comenzarAJugar.setFitHeight(40);
         comenzarAJugar.setFitWidth(40);
         botonComenzarAJugar.setGraphic(comenzarAJugar);
-        BotonComenzarAJugarEventHandler eventHandlerBotonComenzarAJugar = new BotonComenzarAJugarEventHandler(stageMenuJuego,escenaMenuJuego);
+        BotonJugarEventHandler eventHandlerBotonComenzarAJugar = new BotonJugarEventHandler(stageMenuJuego,escenaMenuJuego);
         botonComenzarAJugar.setOnAction(eventHandlerBotonComenzarAJugar);
         botonComenzarAJugar.setAlignment(Pos.BOTTOM_LEFT);
         vboxCentral.getChildren().add(botonComenzarAJugar);

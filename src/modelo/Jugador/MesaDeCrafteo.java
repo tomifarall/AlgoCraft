@@ -67,11 +67,11 @@ public class MesaDeCrafteo {
 
     public Material eliminarMaterial(Posicion posicionTablero){
         Casillero casilleroDeCraft = this.tableroDeCraft.get(posicionTablero);
-        if (casilleroDeCraft.getOcupante().esVacio()) {
-            throw new PosicionVaciaEnLaMesaDeCrafteoException(); //// encap
+        if (casilleroDeCraft.OcupanteEsVacio()) {
+            throw new PosicionVaciaEnLaMesaDeCrafteoException();
         }
         IMapeable materialEliminado = casilleroDeCraft.eliminarOcupante();
-        return  ( Material) materialEliminado; //casteo
+        return  ( Material) materialEliminado;
     }
 
 

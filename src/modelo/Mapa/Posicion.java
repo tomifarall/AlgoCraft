@@ -25,14 +25,14 @@ public class Posicion {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Posicion)) {
+    public boolean equals(Object objeto) {
+        if (!(objeto instanceof Posicion)) {
             return false;
         }
-        if (obj == this) {
+        if (objeto == this) {
             return true;
         }
-        Posicion otraPosicion = (Posicion) obj;
+        Posicion otraPosicion = (Posicion) objeto;
 
         return ((this.getPosicionI() == otraPosicion.getPosicionI() )&& (this.getPosicionJ() == otraPosicion.getPosicionJ()));
     }

@@ -8,15 +8,16 @@ import modelo.Materiales.*;
 public class PicoFino extends Herramienta {
 
     public PicoFino(MetalYPiedra metalYPiedra) {
-        //material = new Metal();
-        material = metalYPiedra;
-        desgaste = new DesgastePorcentual(1000,20, 0.1f);
+        this.material = metalYPiedra;
+        this.desgaste = new DesgastePorcentual(1000,20, 0.1f);
     }
 
     @Override
     public void golpearMaterial( IMaterialMapa material ){
 
-        this.material.golpearMaterial(this, material );
+        try {
+            this.material.golpearMaterial(this, material);
+        }catch (HerramientaRotaException e){throw e;}
     }
     @Override
     public void golpearMaterial( IMaterialMapa material , Madera maderaHerramienta){
